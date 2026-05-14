@@ -1,0 +1,447 @@
+/* colores  */
+/* Columnas  */
+/* Font weights  */
+.wp-block-makistyle-blocks-v2-blog-categoria .categoria__badge {
+  display: inline-block;
+  padding: 0.25em 0.6em;
+  border-radius: 4px;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #111111;
+  background-color: #01fff7;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+.wp-block-makistyle-blocks-v2-blog-filtrar-categoria .lanzador-filtrar__div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+@media (min-width: 768px) {
+  .wp-block-makistyle-blocks-v2-blog-filtrar-categoria .lanzador-filtrar__div {
+    justify-content: flex-end;
+  }
+}
+.wp-block-makistyle-blocks-v2-blog-filtrar-categoria .lanzador-filtrar__a {
+  display: inline-block;
+  padding: 0.5em 1em;
+  border: 1px solid #01fff7;
+  border-radius: 8px;
+  color: #01fff7;
+  background-color: transparent;
+  font-size: 1.125rem;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.1s, background-color 0.1s;
+}
+.wp-block-makistyle-blocks-v2-blog-filtrar-categoria .lanzador-filtrar__a:hover {
+  color: #000000;
+  background-color: #01fff7;
+}
+.wp-block-makistyle-blocks-v2-blog-filtrar-categoria .lanzador-filtrar__reset {
+  margin-left: 0.75rem;
+  display: none;
+}
+
+.wp-block-makistyle-blocks-v2-blog-home-articulos-destacados {
+  color: rgb(253, 253, 253);
+  background-color: rgb(17, 17, 17);
+  border: solid 1px white;
+  padding: 1rem;
+}
+.wp-block-makistyle-blocks-v2-blog-home-articulos-destacados .listado-descripcion {
+  white-space: pre-wrap;
+  min-width: 1px;
+  margin: 0 0 1rem 0;
+  color: white;
+  font-size: 1rem;
+}
+
+.wp-block-makistyle-blocks-v2-blog-home-categoria {
+  color: rgb(253, 253, 253);
+  background-color: rgb(17, 17, 17);
+  border: solid 1px white;
+  padding: 1rem;
+}
+.wp-block-makistyle-blocks-v2-blog-home-categoria .listado-descripcion {
+  white-space: pre-wrap;
+  min-width: 1px;
+  margin: 0 0 1rem 0;
+  color: white;
+  font-size: 1rem;
+}
+
+.wp-block-makistyle-blocks-v2-blog-listado {
+  border: 1px dotted #f00;
+  color: rgb(253, 253, 253);
+  background-color: rgb(17, 17, 17);
+  border: solid 1px white;
+  padding: 1rem;
+}
+.wp-block-makistyle-blocks-v2-blog-listado .listado-descripcion {
+  white-space: pre-wrap;
+  min-width: 1px;
+  margin: 0 0 1rem 0;
+}
+
+.wp-block-makistyle-blocks-v2-boton-regresar .boton-regresar__enlace {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+  border: 1px solid white;
+  padding: 1rem;
+}
+
+.wp-block-makistyle-blocks-v2-breadcrumbs .breadcrumbs__enlace {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+  border: 1px solid white;
+  padding: 1rem;
+}
+
+.wp-block-makistyle-blocks-v2-busqueda-blog-listado {
+  border: 1px dotted #f00;
+  color: rgb(253, 253, 253);
+  background-color: rgb(17, 17, 17);
+  border: solid 1px white;
+  padding: 1rem;
+}
+.wp-block-makistyle-blocks-v2-busqueda-blog-listado .listado-descripcion {
+  white-space: pre-wrap;
+  min-width: 1px;
+  margin: 0 0 1rem 0;
+}
+
+.wp-block-makistyle-blocks-v2-busqueda-tienda-listado {
+  color: rgb(253, 253, 253);
+  background-color: rgb(17, 17, 17);
+  border: solid 1px white;
+  padding: 1rem;
+}
+.wp-block-makistyle-blocks-v2-busqueda-tienda-listado .listado-descripcion {
+  white-space: pre-wrap;
+  min-width: 1px;
+  margin: 0 0 1rem 0;
+}
+
+.wp-block-makistyle-blocks-v2-menu-principal {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+}
+.wp-block-makistyle-blocks-v2-menu-principal h3 {
+  color: #fff;
+  margin-top: 0;
+}
+.wp-block-makistyle-blocks-v2-menu-principal .menu-acordeon-wrap {
+  margin-top: 20px;
+}
+.wp-block-makistyle-blocks-v2-menu-principal .menu-acordeon-toggle {
+  width: 100%;
+  padding: 12px;
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.wp-block-makistyle-blocks-v2-menu-principal .menu-acordeon-content {
+  padding: 15px;
+  border: 1px solid #fff;
+  border-top: none;
+}
+.wp-block-makistyle-blocks-v2-menu-principal .menu-item-wrap {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #fff;
+}
+.wp-block-makistyle-blocks-v2-menu-principal .menu-item-field {
+  border: 1px solid #fff;
+}
+.wp-block-makistyle-blocks-v2-menu-principal .menu-item-field.campo-invalido {
+  border: 2px solid red;
+}
+.wp-block-makistyle-blocks-v2-menu-principal .menu-item-url-wrap {
+  margin-top: 10px;
+}
+.wp-block-makistyle-blocks-v2-menu-principal .menu-item-url-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #fff;
+}
+.wp-block-makistyle-blocks-v2-menu-principal .menu-item-url-input-wrap {
+  padding: 2px;
+  border: 1px solid #fff;
+}
+.wp-block-makistyle-blocks-v2-menu-principal .menu-item-url-input-wrap.campo-invalido {
+  border: 2px solid red;
+}
+.wp-block-makistyle-blocks-v2-menu-principal .btn-eliminar {
+  margin-top: 10px;
+  background-color: white;
+  color: red;
+}
+.wp-block-makistyle-blocks-v2-menu-principal .btn-anadir {
+  background-color: white;
+  margin-top: 10px;
+}
+
+.wp-block-makistyle-blocks-v2-tienda-autores {
+  padding: 1rem;
+  color: white;
+}
+
+.wp-block-makistyle-blocks-v2-tienda-boton-comprar {
+  color: white;
+}
+.wp-block-makistyle-blocks-v2-tienda-boton-comprar .precio-field {
+  margin-bottom: 1rem;
+}
+.wp-block-makistyle-blocks-v2-tienda-boton-comprar .components-base-control__help {
+  font-size: 1rem;
+  color: white;
+}
+
+.wp-block-makistyle-blocks-v2-tienda-fecha-lanzamiento .fecha-lanzamiento-editor label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+.wp-block-makistyle-blocks-v2-tienda-fecha-lanzamiento .fecha-lanzamiento-editor input[type=date] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.wp-block-makistyle-blocks-v2-tienda-filtrar-tipo-recurso .lanzador-filtrar__div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+@media (min-width: 768px) {
+  .wp-block-makistyle-blocks-v2-tienda-filtrar-tipo-recurso .lanzador-filtrar__div {
+    justify-content: flex-end;
+  }
+}
+.wp-block-makistyle-blocks-v2-tienda-filtrar-tipo-recurso .lanzador-filtrar__a {
+  display: inline-block;
+  padding: 0.5em 1em;
+  border: 1px solid #01fff7;
+  border-radius: 8px;
+  color: #01fff7;
+  background-color: transparent;
+  font-size: 1.125rem;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.1s, background-color 0.1s;
+}
+.wp-block-makistyle-blocks-v2-tienda-filtrar-tipo-recurso .lanzador-filtrar__a:hover {
+  color: #000000;
+  background-color: #01fff7;
+}
+.wp-block-makistyle-blocks-v2-tienda-filtrar-tipo-recurso .lanzador-filtrar__reset {
+  margin-left: 0.75rem;
+  display: none;
+}
+
+.wp-block-makistyle-blocks-v2-tienda-home-productos-destacados {
+  color: rgb(253, 253, 253);
+  background-color: rgb(17, 17, 17);
+  border: solid 1px white;
+  padding: 1rem;
+}
+.wp-block-makistyle-blocks-v2-tienda-home-productos-destacados .listado-descripcion {
+  white-space: pre-wrap;
+  min-width: 1px;
+  margin: 0 0 1rem 0;
+  color: white;
+  font-size: 1rem;
+}
+
+.wp-block-makistyle-blocks-v2-tienda-home-tipo-recurso {
+  color: rgb(253, 253, 253);
+  background-color: rgb(17, 17, 17);
+  border: solid 1px white;
+  padding: 1rem;
+}
+.wp-block-makistyle-blocks-v2-tienda-home-tipo-recurso .listado-descripcion {
+  white-space: pre-wrap;
+  min-width: 1px;
+  margin: 0 0 1rem 0;
+  color: white;
+  font-size: 1rem;
+}
+
+.wp-block-makistyle-blocks-v2-tienda-listado-tipo-recurso {
+  color: rgb(253, 253, 253);
+  background-color: rgb(17, 17, 17);
+  border: solid 1px white;
+  padding: 1rem;
+}
+.wp-block-makistyle-blocks-v2-tienda-listado-tipo-recurso .listado-descripcion {
+  white-space: pre-wrap;
+  min-width: 1px;
+  margin: 0 0 1rem 0;
+}
+
+.wp-block-makistyle-blocks-v2-tienda-listado {
+  color: rgb(253, 253, 253);
+  background-color: rgb(17, 17, 17);
+  border: solid 1px white;
+  padding: 1rem;
+}
+.wp-block-makistyle-blocks-v2-tienda-listado .listado-descripcion {
+  white-space: pre-wrap;
+  min-width: 1px;
+  margin: 0 0 1rem 0;
+}
+
+.wp-block-makistyle-blocks-v2-tienda-promociones .promocion-item {
+  color: var(--wp--preset--color--color-primario);
+  font-size: var(--wp--preset--font-size--medium);
+}
+.wp-block-makistyle-blocks-v2-tienda-promociones .advertencia-promocion {
+  background-color: #fff;
+  color: red;
+  padding: 4px 8px;
+  font-weight: bold;
+}
+.wp-block-makistyle-blocks-v2-tienda-promociones .codigo-badge {
+  border: 2px solid #01fff7;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+.wp-block-makistyle-blocks-v2-tienda-promociones .codigo-badge .codigo-copiado-tooltip {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+.wp-block-makistyle-blocks-v2-tienda-tipo-recurso .categoria__badge {
+  display: inline-block;
+  padding: 0.25em 0.6em;
+  border-radius: 4px;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #111111;
+  background-color: #01fff7;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+.wp-block-makistyle-blocks-v2-youtube-destacado .youtube-destacado-editor {
+  padding: 20px;
+  color: white;
+  border-radius: 4px;
+}
+.wp-block-makistyle-blocks-v2-youtube-destacado .youtube-destacado-editor h3 {
+  margin-top: 0;
+}
+.wp-block-makistyle-blocks-v2-youtube-destacado .youtube-destacado-editor .components-base-control__help {
+  font-size: 1rem;
+  color: white;
+}
+.wp-block-makistyle-blocks-v2-youtube-destacado .youtube-destacado-editor .mkv2-local-video-container {
+  margin-top: 20px;
+}
+.wp-block-makistyle-blocks-v2-youtube-destacado .youtube-destacado-editor .mkv2-local-video-container .mkv2-local-video-label {
+  margin-bottom: 10px;
+}
+.wp-block-makistyle-blocks-v2-youtube-destacado .youtube-destacado-editor .mkv2-local-video-container .mkv2-local-video-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.wp-block-makistyle-blocks-v2-youtube-destacado .youtube-destacado-editor .mkv2-local-video-container .mkv2-local-video-actions .components-button.is-secondary {
+  color: #01fff7;
+  border-color: #01fff7;
+}
+.wp-block-makistyle-blocks-v2-youtube-destacado .youtube-destacado-editor .mkv2-local-video-container .mkv2-local-video-actions .components-button.is-secondary:hover {
+  background: #01fff7;
+  color: black;
+}
+.wp-block-makistyle-blocks-v2-youtube-destacado .youtube-destacado-editor .mkv2-local-video-container .mkv2-local-video-actions .components-button.is-link.is-destructive {
+  font-size: 1rem;
+  background-color: white;
+  padding: 3px;
+  font-weight: 600;
+}
+.wp-block-makistyle-blocks-v2-youtube-destacado .youtube-destacado-editor .mkv2-local-video-container .mkv2-local-video-info {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #ccc;
+}
+.wp-block-makistyle-blocks-v2-youtube-destacado .youtube-destacado-editor .mkv2-local-video-container .mkv2-local-video-info code {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.wp-block-makistyle-blocks-v2-descripcion-post-content {
+  background-color: white;
+  color: black;
+  padding: 1rem;
+}
+
+.post-type-tienda_pt .desc,
+.post-type-post .desc {
+  background-color: white;
+  color: black !important;
+  margin-right: 20px !important;
+  margin-left: 20px !important;
+}
+
+body {
+  background-color: #1a1a1a;
+}
+
+.color-blanco {
+  color: #fdfdfd;
+}
+
+.wp-admin {
+  background-color: white;
+  color: black;
+}
+
+.wp-block {
+  padding: 1rem;
+}
+.wp-block.meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}/*# sourceMappingURL=admin-styles.css.map */

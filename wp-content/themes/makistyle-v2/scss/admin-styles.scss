@@ -1,0 +1,58 @@
+@use "variables" as *;
+@use "mixins" as m;
+@use "admin-bloques";
+
+body {
+	background-color: #1a1a1a;
+}
+.color-blanco {
+	color: $blanco;
+}
+
+// .block-editor-page .wp-block-group.has-background {
+//   padding: 1.25em 2.375em;
+// }
+
+// .wp-block-makistyle-blocks-v2-youtube-destacado {
+//   border: 2px solid red;
+// }
+
+// .edit-tags-php .form-wrap p {
+//   color: white;
+// }
+// .term-php p.description {
+//   color: white;
+// }
+// .cmb2-wrap {
+//   color: white;
+// }
+.wp-admin {
+	background-color: white;
+	color: black;
+}
+// .edit-tags-php {
+//   background-color: white;
+// }
+// .term-php {
+//   background-color: white;
+// }
+// .cmb2-wrap {
+//   background-color: white;
+// }
+// .edit-php.post-type-post {
+//   background-color: white;
+// }
+// .edit-php.post-type-tienda_pt {
+//   background-color: white;
+// }
+// .options-general-php {
+//   background-color: white;
+// }
+.wp-block {
+	padding: 1rem;
+	&.meta {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+}

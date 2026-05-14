@@ -1,0 +1,135 @@
+@use "variables" as *;
+@use "mixins" as m;
+
+.color-blanco {
+	color: $blanco;
+}
+.bg-negro {
+	background-color: $negro;
+}
+
+.has-color-primario-color {
+	color: $color-primario !important;
+}
+
+.has-negro-color {
+	color: $negro;
+}
+
+.has-blanco-color {
+	color: $blanco !important;
+}
+
+.has-neon-naranja-color {
+	color: $neon-naranja !important;
+}
+
+.has-neon-rojo-color {
+	color: $neon-rojo !important;
+}
+
+.color-leyenda {
+	color: $color-leyenda-cards;
+}
+
+.has-blanco-background-color {
+	background-color: $blanco !important;
+}
+
+.has-negro-background-color {
+	background-color: $negro;
+}
+
+.has-fondo-oscuro-cards-background-color {
+	background-color: $color-fondo-oscuro-cards;
+}
+
+.has-color-primario-background-color {
+	background-color: $color-primario;
+}
+
+.has-neon-naranja-background-color {
+	background-color: $neon-naranja !important;
+}
+
+.has-neon-amarillo-background-color {
+	background-color: $neon-amarillo !important;
+}
+
+.has-neon-rojo-background-color {
+	background-color: $neon-rojo !important;
+}
+
+.border-card-hover-primario:hover {
+	@include m.border-card-hover($color-primario);
+}
+
+.mw-sm-4 {
+	@media (min-width: 782px) {
+		max-width: $col-4;
+	}
+}
+.mw-sm-8 {
+	@media (min-width: 782px) {
+		max-width: $col-8;
+	}
+}
+.cursor-pointer {
+	cursor: pointer !important;
+}
+
+.inset-0 {
+	inset: 0 !important;
+}
+
+.h-400 {
+	height: 400px !important;
+}
+
+.h-600 {
+	height: 600px !important;
+}
+
+.w-fit-content {
+	width: fit-content !important;
+}
+
+.borde-neon-naranja {
+	border: 1px solid $neon-naranja !important;
+}
+
+.has-degradado-1-gradient-background {
+	background: #816448;
+	background: linear-gradient(
+		90deg,
+		rgba(129, 100, 72, 1) 0%,
+		rgba(78, 71, 58, 1) 100%
+	);
+}
+
+.d-sm-wp-block {
+	@media (min-width: $sm-wp) {
+		display: block !important;
+	}
+}
+
+.word-break-keep {
+	word-break: keep-all;
+}
+.has-neon-morado-color {
+	color: #fd89f5;
+}
+.has-neon-rosa-color {
+	color: #fdc3fb;
+}
+.word-spacing-wide {
+	word-spacing: 16px;
+}
+
+.gap-x-7rem {
+	column-gap: 7rem;
+}
+
+.justify-content-center {
+	justify-content: center;
+}

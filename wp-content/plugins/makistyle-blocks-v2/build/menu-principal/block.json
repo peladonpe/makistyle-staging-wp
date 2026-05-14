@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "makistyle-blocks-v2/menu-principal",
+  "version": "2.0.0",
+  "title": "Menú principal",
+  "category": "makistyle-v2",
+  "description": "Menú principal para Makistyle",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "menuItems": {
+      "type": "array",
+      "default": []
+    }
+  },
+  "textdomain": "makistyle",
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js",
+  "render": "file:./render.php"
+}

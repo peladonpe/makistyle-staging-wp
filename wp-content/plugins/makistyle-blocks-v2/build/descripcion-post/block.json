@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "makistyle-blocks-v2/descripcion-post",
+  "version": "1.0.0",
+  "title": "Descripción Post",
+  "category": "makistyle-v2",
+  "description": "Caja de texto enriquecida para descripción del post",
+  "example": {},
+  "supports": {
+    "html": false,
+    "typography": {
+      "fontSize": true
+    }
+  },
+  "attributes": {
+    "descriptionContent": {
+      "type": "string",
+      "source": "html",
+      "selector": ".wp-block-makistyle-blocks-v2-descripcion-post-content"
+    },
+    "fontSize": {
+      "type": "string",
+      "default": "medium"
+    }
+  },
+  "textdomain": "makistyle",
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js"
+}

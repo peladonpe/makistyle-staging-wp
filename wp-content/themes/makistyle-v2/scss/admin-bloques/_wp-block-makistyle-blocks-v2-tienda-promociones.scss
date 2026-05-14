@@ -1,0 +1,35 @@
+.wp-block-makistyle-blocks-v2-tienda-promociones {
+  .promocion-item {
+    color: var(--wp--preset--color--color-primario);
+    font-size: var(--wp--preset--font-size--medium);
+  }
+
+  .advertencia-promocion {
+    background-color: #fff;
+    color: red;
+    padding: 4px 8px;
+    font-weight: bold;
+  }
+
+  .codigo-badge {
+    border: 2px solid #01fff7;
+    padding: 2px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+
+    .codigo-copiado-tooltip {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #000;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      white-space: nowrap;
+      z-index: 1000;
+    }
+  }
+}

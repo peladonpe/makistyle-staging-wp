@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "makistyle-blocks-v2/tienda-promociones",
+	"version": "2.0.0",
+	"title": "Tienda / Promociones",
+	"category": "makistyle-v2",
+	"description": "Muestra la promociones del item tienda",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "makistyle",
+	"editorScript": "file:./index.js",
+	"viewScript": "file:./view.js",
+	"render": "file:./render.php"
+}

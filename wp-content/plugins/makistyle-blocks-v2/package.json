@@ -1,0 +1,35 @@
+{
+	"name": "makistyle-blocks-v2",
+	"version": "2.0.0",
+	"description": "Bloques personalizados para Makistyle versión 2",
+	"author": "Papo Ladon",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build --blocks-manifest",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start --blocks-manifest"
+	},
+	"dependencies": {
+		"@wordpress/block-editor": "^15.14.0",
+		"@wordpress/blocks": "^15.14.0",
+		"@wordpress/components": "^32.3.0",
+		"@wordpress/core-data": "^7.41.0",
+		"@wordpress/data": "^10.41.0",
+		"@wordpress/element": "^6.41.0",
+		"@wordpress/i18n": "^6.14.0"
+	},
+	"devDependencies": {
+		"@prettier/plugin-php": "^0.24.0",
+		"@wordpress/eslint-plugin": "^24.1.0",
+		"@wordpress/prettier-config": "^4.39.0",
+		"@wordpress/scripts": "^31.4.0",
+		"@wordpress/stylelint-config": "^23.31.0",
+		"eslint-config-prettier": "^10.1.8",
+		"stylelint": "^16.26.1"
+	}
+}

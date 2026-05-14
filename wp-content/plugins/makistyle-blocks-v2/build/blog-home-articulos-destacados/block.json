@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "makistyle-blocks-v2/blog-home-articulos-destacados",
+  "version": "2.0.0",
+  "title": "Blog - Home / Articulos destacados",
+  "category": "makistyle-v2",
+  "description": "Articulos destacados del blog, que se visualizará en la pagina inicial (Home)",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "numeroArticulosDestacados": {
+      "type": "integer",
+      "default": 6
+    }
+  },
+  "textdomain": "makistyle",
+  "editorScript": "file:./index.js",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}

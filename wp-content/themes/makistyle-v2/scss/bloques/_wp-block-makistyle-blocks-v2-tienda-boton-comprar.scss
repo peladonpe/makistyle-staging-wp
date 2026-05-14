@@ -1,0 +1,29 @@
+.wp-block-makistyle-blocks-v2-tienda-boton-comprar {
+  .btn-precio-tienda-wrap {
+    margin-bottom: 1rem;
+  }
+
+  .precio-tachado {
+    text-decoration: line-through;
+    margin-right: 16px;
+  }
+
+  .btn-precio-tienda {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: transparent;
+    border: 2px solid #f9c351;
+    border-radius: 8px;
+    color: #f9c351;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 500;
+    transition: all 0.1s ease;
+    text-align: center;
+  }
+
+  .btn-precio-tienda:hover {
+    background-color: #f9c351;
+    color: #000;
+  }
+}

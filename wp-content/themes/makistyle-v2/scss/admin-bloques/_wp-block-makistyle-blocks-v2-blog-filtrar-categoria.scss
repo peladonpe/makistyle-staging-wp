@@ -1,0 +1,39 @@
+.wp-block-makistyle-blocks-v2-blog-filtrar-categoria {
+  .lanzador-filtrar__div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // gap: 0.75rem;
+    margin-top: 1rem;
+
+    @media (min-width: 768px) {
+      justify-content: flex-end;
+    }
+  }
+
+  .lanzador-filtrar__a {
+    display: inline-block;
+    padding: 0.5em 1em;
+    border: 1px solid #01fff7;
+    border-radius: 8px;
+    color: #01fff7;
+    background-color: transparent;
+    font-size: 1.125rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      color 0.1s,
+      background-color 0.1s;
+
+    &:hover {
+      color: #000000;
+      background-color: #01fff7;
+    }
+  }
+
+  .lanzador-filtrar__reset {
+    margin-left: 0.75rem;
+    display: none;
+  }
+}

@@ -1,0 +1,147 @@
+@use "variables" as *;
+// @use "custom-bootstrap" as c;
+
+@mixin line-clamp($numLineas: 1) {
+  display: -webkit-box;
+  line-clamp: $numLineas;
+  -webkit-line-clamp: $numLineas;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+@mixin ph-remove-lineclamp() {
+  display: block;
+}
+@mixin colapsable($lh: 1.5rem, $numLineas: 1) {
+  cursor: pointer;
+  position: relative;
+  max-height: $lh * $numLineas;
+  overflow: hidden;
+  padding-right: 1rem;
+  &::after {
+    position: absolute;
+    content: "...";
+    width: 1rem;
+    bottom: 0;
+    right: 0;
+  }
+}
+@mixin ph-remove-colapsable() {
+  cursor: default;
+  max-height: 100%;
+  padding-right: 0;
+  &::after {
+    content: none;
+  }
+}
+
+@mixin cortar-frase($width: 3rem, $paddingRight: 0.4rem, $lineHeight: 1.5rem) {
+  width: $width;
+  height: $lineHeight;
+  position: relative;
+  overflow: hidden;
+  padding-right: $paddingRight;
+  overflow-wrap: break-word;
+  &::after {
+    position: absolute;
+    content: ".";
+    line-height: $lineHeight;
+    width: $paddingRight;
+    bottom: 0;
+    right: 0;
+  }
+}
+@mixin remove-cortar-frase() {
+  width: auto;
+  padding-right: 0;
+  overflow-wrap: normal;
+  &::after {
+    content: none;
+  }
+}
+
+// $bgColor, $borderColor, $colorTexto, $paddingY, $paddingX, $fontSize, $borderRadius
+// @mixin btn-custom(
+//   $bgColor,
+//   $borderColor,
+//   $colorTexto,
+//   $paddingY,
+//   $paddingX,
+//   $fontSize,
+//   $borderRadius
+// ) {
+//   // bg, border, color-texto, HOVER: bg, border, color-texto
+//   @include c.button-variant(
+//     $bgColor,
+//     $borderColor,
+//     $colorTexto,
+//     darken($bgColor, 10%),
+//     $borderColor,
+//     darken($colorTexto, 10%)
+//   );
+//   // padding y, padding x, font-size, border-radius
+//   @include c.button-size($paddingY, $paddingX, $fontSize, $borderRadius);
+//   font-weight: $normal;
+//   text-decoration: none;
+// }
+
+// $Color, $colorTextoHover, $paddingY, $paddingX, $fontSize, $borderRadius
+// @mixin btn-custom-outline(
+//   $color,
+//   $colorTextoHover,
+//   $paddingY,
+//   $paddingX,
+//   $fontSize,
+//   $borderRadius
+// ) {
+//   // bg, border, color-texto, HOVER: bg, border, color-texto
+//   @include c.button-variant(
+//     transparent,
+//     $color,
+//     $color,
+//     $color,
+//     $color,
+//     $colorTextoHover
+//   );
+//   // padding y, padding x, font-size, border-radius
+//   @include c.button-size($paddingY, $paddingX, $fontSize, $borderRadius);
+//   font-weight: $normal;
+//   text-decoration: none;
+// }
+
+@mixin padding-x($size) {
+  padding-left: $size;
+  padding-right: $size;
+}
+@mixin margin-x($size) {
+  margin-left: $size;
+  margin-right: $size;
+}
+@mixin padding-y($size) {
+  padding-top: $size;
+  padding-bottom: $size;
+}
+@mixin margin-y($size) {
+  margin-top: $size;
+  margin-bottom: $size;
+}
+
+@mixin contenedor($paddingY: 4rem) {
+  margin: 0 auto;
+  scroll-margin-top: 4rem;
+  @include padding-y($paddingY);
+  @include padding-x(0.5rem);
+  @media (min-width: $xsm) {
+    @include padding-x(1rem);
+  }
+
+  @media (min-width: $sm) {
+    @include padding-x(2rem);
+  }
+  @media (min-width: $md) {
+    @include padding-x(3.75rem);
+  }
+}
+
+@mixin border-card-hover($color) {
+  border: 1px solid $color;
+}

@@ -1,0 +1,62 @@
+@use "variables" as *;
+@use "mixins" as m;
+.single main {
+	@include m.padding-x(2rem);
+	@include m.padding-y(2rem);
+	@media (min-width: $sm-wp) {
+		@include m.padding-x(7rem);
+	}
+	@media (min-width: $lg) {
+		@include m.padding-x(10rem);
+	}
+}
+
+.single-post {
+	.titulo {
+		@include m.padding-y(50px);
+	}
+	.meta {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 3rem;
+		gap: 1rem;
+	}
+}
+
+.single-tienda_pt {
+	.titulo {
+		@include m.padding-y(50px);
+	}
+	.meta {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 3rem;
+		gap: 1rem;
+	}
+
+	// .fecha-lanzamiento {
+	//   margin-bottom: 1rem;
+	// }
+
+	h3 {
+		margin-bottom: 1.5rem;
+	}
+
+	.autor {
+		margin-bottom: 1.5rem;
+	}
+}
+.single-post {
+	.fecha-publicacion {
+		margin-bottom: 1rem;
+	}
+	h3 {
+		margin-bottom: 1.5rem;
+	}
+	.autor {
+		margin-bottom: 1.5rem;
+	}
+	.enlace-social-articulo {
+		margin-bottom: 1rem;
+	}
+}

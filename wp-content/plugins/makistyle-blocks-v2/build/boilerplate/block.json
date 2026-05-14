@@ -1,0 +1,16 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "makistyle-blocks-v2/boilerplate",
+  "version": "2.0.0",
+  "title": "Boilerplate",
+  "category": "makistyle-v2",
+  "description": "Boilerplate",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "textdomain": "makistyle",
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js"
+}

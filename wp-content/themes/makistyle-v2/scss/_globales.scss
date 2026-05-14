@@ -1,0 +1,153 @@
+@use "variables" as *;
+@use "mixins" as m;
+
+* {
+  box-sizing: border-box;
+  // font-family: "Roboto", sans-serif;
+  // outline: 2px solid red !important;
+}
+html {
+  scroll-behavior: smooth;
+  // background-color: $negro;
+}
+
+body {
+  background-color: $color-fondo-oscuro-cards;
+  color: white;
+}
+
+// .wp-admin {
+//   background-color: #fff;
+// }
+
+.main-container {
+  // max-width: 1320px;
+  max-width: $xxl;
+  margin: 0 auto;
+  background-color: $negro;
+}
+
+hr {
+  margin: 4rem auto !important;
+}
+
+.has-x-large-font-size {
+  @media (max-width: $xsm) {
+    font-size: 2rem !important;
+  }
+}
+
+h2.has-background {
+  // padding: 3.25rem 0.5rem !important;
+  @include m.padding-x(0.5rem);
+}
+
+// .custom-logo {
+//   max-width: 250px !important;
+// }
+
+h1.has-x-large-font-size {
+  @media (max-width: 350px) {
+    font-size: 1.5rem !important;
+  }
+}
+
+header.has-background {
+  @include m.padding-x(1rem);
+  padding-bottom: 0.5rem;
+}
+
+section.has-background {
+  @include m.padding-y(0);
+}
+
+h2.has-background {
+  @include m.padding-y(0);
+}
+.monoton-regular {
+  font-family: "Monoton", sans-serif;
+  word-spacing: 10px !important;
+}
+
+.seccion {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @media (min-width: 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.wp-social-link-instagram {
+  background-color: black;
+  border: 2px solid #f00075;
+  svg {
+    color: #f00075 !important;
+  }
+  span {
+    color: #f00075;
+    font-size: 1.2rem !important;
+    font-weight: bold;
+  }
+  &:hover {
+    background-color: #f00075;
+    svg {
+      color: white !important;
+    }
+    span {
+      color: white;
+    }
+  }
+}
+
+.wp-social-link-youtube {
+  background-color: black;
+  border: 2px solid red;
+  svg {
+    color: red !important;
+  }
+  span {
+    color: red;
+    font-size: 1.2rem !important;
+    font-weight: bold;
+  }
+  &:hover {
+    background-color: red;
+    svg {
+      color: white !important;
+    }
+    span {
+      color: white;
+    }
+  }
+}
+
+.wp-social-link-tiktok {
+  border: 2px solid white;
+  span {
+    font-size: 1.2rem !important;
+    font-weight: bold;
+  }
+}
+
+.wp-social-link-soundcloud {
+  background-color: black;
+  border: 2px solid #ff5601;
+  svg {
+    color: #ff5601 !important;
+  }
+  span {
+    color: #ff5601;
+    font-size: 1.2rem !important;
+    font-weight: bold;
+  }
+  &:hover {
+    background-color: #ff5601;
+    svg {
+      color: white !important;
+    }
+    span {
+      color: white;
+    }
+  }
+}

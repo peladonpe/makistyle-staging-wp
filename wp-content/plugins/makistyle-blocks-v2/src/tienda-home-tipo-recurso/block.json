@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "makistyle-blocks-v2/tienda-home-tipo-recurso",
+	"version": "2.0.0",
+	"title": "Tienda - Home / Tipo Recurso",
+	"category": "makistyle-v2",
+	"description": "Productos de la tienda por tipo de recurso, para la página inicial (Home)",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"tipoRecursoInicio": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"textdomain": "makistyle",
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js"
+}

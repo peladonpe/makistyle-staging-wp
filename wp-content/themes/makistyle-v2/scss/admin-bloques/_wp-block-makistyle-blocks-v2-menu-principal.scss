@@ -1,0 +1,78 @@
+.wp-block-makistyle-blocks-v2-menu-principal {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+
+  h3 {
+    color: #fff;
+    margin-top: 0;
+  }
+
+  .menu-acordeon-wrap {
+    margin-top: 20px;
+  }
+
+  .menu-acordeon-toggle {
+    width: 100%;
+    padding: 12px;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #fff;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-acordeon-content {
+    padding: 15px;
+    border: 1px solid #fff;
+    border-top: none;
+  }
+
+  .menu-item-wrap {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #fff;
+  }
+
+  .menu-item-field {
+    border: 1px solid #fff;
+
+    &.campo-invalido {
+      border: 2px solid red;
+    }
+  }
+
+  .menu-item-url-wrap {
+    margin-top: 10px;
+  }
+
+  .menu-item-url-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+  }
+
+  .menu-item-url-input-wrap {
+    padding: 2px;
+    border: 1px solid #fff;
+
+    &.campo-invalido {
+      border: 2px solid red;
+    }
+  }
+
+  .btn-eliminar {
+    margin-top: 10px;
+    background-color: white;
+    color: red;
+  }
+
+  .btn-anadir {
+    background-color: white;
+    margin-top: 10px;
+  }
+}

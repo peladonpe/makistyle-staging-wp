@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "makistyle-blocks-v2/busqueda-tienda-listado",
+	"version": "2.0.0",
+	"title": "Busqueda - Tienda / Listado resultados",
+	"category": "makistyle-v2",
+	"description": "Resultados de la búsqueda de productos tienda",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"esPaginado": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"textdomain": "makistyle",
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js"
+}

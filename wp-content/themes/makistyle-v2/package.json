@@ -1,0 +1,25 @@
+{
+	"name": "makistyle",
+	"version": "2.0.0",
+	"description": "Tema de  wordpress de Makistyle",
+	"main": "index.php",
+	"scripts": {
+		"format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,scss,php}\"",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Papo Ladon",
+	"license": "ISC",
+	"devDependencies": {
+		"@prettier/plugin-php": "^0.24.0",
+		"@wordpress/prettier-config": "^4.42.0",
+		"browser-sync": "^3.0.4",
+		"gulp": "^5.0.1",
+		"gulp-sass": "^6.0.1",
+		"prettier": "^3.8.1",
+		"sass": "^1.97.3"
+	},
+	"browserslist": [
+		"last 1 version",
+		"> 1%"
+	]
+}

@@ -1,0 +1,76 @@
+@use "variables" as *;
+@use "mixins" as m;
+.diez-lineas {
+  @include m.line-clamp(10);
+}
+
+.tres-lineas {
+  @include m.line-clamp(3);
+}
+
+.btn-outline-primario:hover {
+  > a,
+  > button {
+    color: black !important;
+    background-color: $color-primario !important;
+    border-color: $color-primario;
+  }
+}
+
+.btn-outline-neon-naranja:hover {
+  > a {
+    color: black !important;
+    background-color: $neon-naranja !important;
+    border-color: $neon-naranja;
+  }
+}
+.btn-outline-blanco:hover {
+  > a {
+    color: black !important;
+    background-color: $blanco !important;
+    border-color: $blanco;
+  }
+}
+
+.is-style-outline--1 > a {
+  background: transparent !important;
+}
+
+.figure-400 img {
+  width: 100% !important;
+  height: 400px !important;
+  object-fit: cover !important;
+}
+
+.figure-600 img {
+  width: 100% !important;
+  height: 600px !important;
+  object-fit: cover !important;
+  padding: 0;
+  @media (min-width: $sm-wp) {
+    @include m.padding-y(0.5rem);
+    object-fit: contain !important;
+  }
+}
+
+.gradient-h1 {
+  width: fit-content;
+  margin: 0 auto;
+  color: transparent;
+  background: linear-gradient(90deg, #fd89f5 0%, #01fff7 50%, #fd89f5 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.gradient-titulo {
+  width: fit-content;
+  color: transparent;
+  background: linear-gradient(
+    90deg,
+    $color-primario 0%,
+    $neon-morado 50%,
+    $color-primario 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+}

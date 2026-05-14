@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+
+		<style>
+			.pr-hero {
+				position: relative;
+				height: 600px;
+				padding: 0;
+				overflow: hidden;
+				background: linear-gradient( 90deg, #816448 0%, #4e473a 100% );
+			}
+
+			.pr-figure {
+				margin: 0;
+				width: 100%;
+				height: 100%;
+
+				img {
+					width: 100% !important;
+					height: 600px !important;
+					object-fit: cover !important;
+					padding: 0;
+					@media ( min-width: 782px ) {
+						/* @include m.padding-y( 0.5rem ); */
+						padding-top: 0.5rem;
+						padding-bottom: 0.5rem;
+						object-fit: contain !important;
+					}
+				}
+			}
+
+			.pr-img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<section class="pr-hero">
+			<figure class="pr-figure">
+				<img
+					fetchpriority="high"
+					decoding="async"
+					width="400"
+					height="400"
+					src="http://localhost/makistyle/wp-content/uploads/2025/08/descontrola.png"
+					class="pr-img"
+					alt="Descargar tema de música Newstyle: Makistyle &amp; Clua - Descontrola"
+					srcset="
+						http://localhost/makistyle/wp-content/uploads/2025/08/descontrola.png         400w,
+						http://localhost/makistyle/wp-content/uploads/2025/08/descontrola-150x150.png 150w
+					"
+					sizes="(max-width: 400px) 100vw, 400px"
+				/>
+			</figure>
+		</section>
+	</body>
+</html>

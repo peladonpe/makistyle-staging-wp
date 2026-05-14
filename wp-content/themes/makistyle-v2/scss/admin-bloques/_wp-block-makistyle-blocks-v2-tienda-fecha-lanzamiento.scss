@@ -1,0 +1,16 @@
+.wp-block-makistyle-blocks-v2-tienda-fecha-lanzamiento {
+  .fecha-lanzamiento-editor {
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input[type="date"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  }
+}

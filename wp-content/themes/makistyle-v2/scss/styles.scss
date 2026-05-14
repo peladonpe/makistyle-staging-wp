@@ -1,0 +1,22 @@
+@use "globales";
+@use "utilidades";
+@use "componentes";
+// @use "animaciones";
+@use "layout";
+@use "pages";
+@use "single";
+// @use "blog";
+@use "iframes";
+@use "correccion_wpadminbar";
+@use "paginacion";
+
+@use "bloques";
+
+/* Fuentes  */
+// @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+.monoton-regular {
+  font-family: "Monoton", sans-serif;
+  word-spacing: 11px !important;
+}

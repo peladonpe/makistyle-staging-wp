@@ -85,6 +85,7 @@ Thumbs.db
 # !wp-content/mu-plugins/example-mu-plugin/
 # !wp-content/plugins/<nombre-plugin>/
 !wp-content/themes/makistyle-v2
+!wp-content/plugins/makistyle-blocks-v2/
 
 # Personalizados
 ignored

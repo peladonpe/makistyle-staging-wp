@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "makistyle-blocks-v2/tienda-fecha-lanzamiento",
+	"version": "2.0.0",
+	"title": "Tienda / Fecha lanzam.",
+	"category": "makistyle-v2",
+	"description": "Fecha lanzamiento artículo tienda",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"attributes": {},
+	"textdomain": "makistyle",
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js"
+}

@@ -1,0 +1,62 @@
+@use "../variables" as *;
+
+.wp-block-makistyle-blocks-v2-youtube-destacado {
+	.youtube-destacado-editor {
+		padding: 20px;
+		color: white;
+		border-radius: 4px;
+
+		h3 {
+			margin-top: 0;
+		}
+		.components-base-control__help {
+			font-size: 1rem;
+			color: white;
+		}
+
+		.mkv2-local-video-container {
+			margin-top: 20px;
+
+			.mkv2-local-video-label {
+				margin-bottom: 10px;
+			}
+
+			.mkv2-local-video-actions {
+				display: flex;
+				gap: 10px;
+				align-items: center;
+
+				.components-button {
+					&.is-secondary {
+						color: $color-primario;
+						border-color: $color-primario;
+
+						&:hover {
+							background: $color-primario;
+							color: black;
+						}
+					}
+
+					&.is-link.is-destructive {
+						font-size: 1rem;
+						background-color: white;
+						padding: 3px;
+						font-weight: 600;
+					}
+				}
+			}
+
+			.mkv2-local-video-info {
+				margin-top: 10px;
+				font-size: 12px;
+				color: #ccc;
+
+				code {
+					background-color: rgba(255, 255, 255, 0.1);
+					padding: 2px 4px;
+					border-radius: 3px;
+				}
+			}
+		}
+	}
+}

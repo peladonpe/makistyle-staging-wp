@@ -1,0 +1,44 @@
+@use "variables" as *;
+.paginacion {
+  span.current {
+    display: inline-block;
+    color: $negro;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-right: 1px;
+    margin-bottom: 0.5rem;
+
+    background-color: $color-primario;
+    border: 1px solid $color-primario;
+
+    @media (max-width: $sm) {
+      display: none;
+    }
+  }
+  a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    margin-right: 1px;
+    margin-bottom: 0.5rem;
+
+    color: $color-primario;
+    border: 1px solid $color-primario;
+    &:hover {
+      color: $negro;
+      background-color: $color-primario;
+    }
+
+    @media (max-width: $md) {
+      &:not(.prev):not(.next) {
+        display: none;
+      }
+    }
+    @media (max-width: $sm) {
+      font-size: 0.8rem;
+      padding: 0.2rem 0.5rem;
+    }
+  }
+}
