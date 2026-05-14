@@ -1,0 +1,91 @@
+# -----------------------------------------------------------------
+# .gitignore for WordPress @salcode
+# -----------------------------------------------------------------
+
+# Ignorar todo en la raíz excepto "wp-content"
+/*
+!wp-content/
+
+# Ignorar todo en wp-content excepto mu-plugins, plugins y themes
+wp-content/*
+!wp-content/mu-plugins/
+!wp-content/plugins/
+!wp-content/themes/
+
+# Ignorar todos los mu-plugins, plugins y themes salvo los whitelisted
+wp-content/mu-plugins/*
+wp-content/plugins/*
+wp-content/themes/*
+
+# Archivos que empiecen por . o ~
+.*
+~*
+
+# Dependencias de node
+node_modules/
+
+# Archivos de OS
+ehthumbs.db
+Thumbs.db
+
+# Archivos de editor
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+
+# Logs y bases de datos
+*.log
+*.sql
+*.sqlite
+
+# Archivos compilados
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Archivos empaquetados
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# -------------------------
+# Whitelisted Files
+# -------------------------
+
+!.gitignore
+!.editorconfig
+!.phpcs.xml.dist
+!README.md
+!CHANGELOG.md
+!composer.json
+!.eslintrc
+!.eslintrc.js
+!.eslintrc.json
+!.eslintignore
+
+!android-chrome-*.png
+!apple-touch-icon*.png
+!browserconfig.xml
+!favicon*.png
+!favicon*.ico
+!manifest.json
+!mstile-*.png
+!safari-pinned-tab.svg
+!site.webmanifest
+
+# Temas y plugins propios (añadir los que correspondan):
+# !wp-content/mu-plugins/example-mu-plugin/
+# !wp-content/plugins/<nombre-plugin>/
+!wp-content/themes/makistyle-v2
+
+# Personalizados
+ignored
+build-optimizador
