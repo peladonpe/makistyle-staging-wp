@@ -16,7 +16,7 @@ function makistyle_cmb2_tipo_recurso_taxonomia()
 			'cmb2',
 		),
 		'object_types' => ['term'], // Post type
-		'taxonomies' => ['tipo_recurso_taxonomia'],
+		'taxonomies' => ['tipo_recurso_taxonomia', 'product_cat'],
 	]);
 	$makistyle_cmb2_tipo_recurso_taxonomia->add_field([
 		'name' => esc_html__('Nombre SINGULAR', 'cmb2'),
@@ -349,10 +349,11 @@ function makistyle_cmb2_seo()
 	$pv_cmb2_seo = new_cmb2_box([
 		'id' => $prefix . 'metaboxes',
 		'title' => esc_html__('Campos seo', 'cmb2'),
-		'object_types' => ['page', 'tienda_pt', 'post'], // Post type
+		'object_types' => ['page', 'tienda_pt', 'post', 'product'], // Post type
 		'context' => 'normal',
 		'priority' => 'high',
 		'show_names' => true, // Show field names on the left
+		'show_in_rest' => true,
 	]);
 	$pv_cmb2_seo->add_field([
 		'name' => esc_html__('Meta description', 'cmb2'),
@@ -361,7 +362,7 @@ function makistyle_cmb2_seo()
 		'type' => 'textarea',
 	]);
 }
-add_action('cmb2_admin_init', 'makistyle_cmb2_seo');
+add_action('cmb2_init', 'makistyle_cmb2_seo');
 
 // JavaScript para mostrar el contador de caracteres en el metabox de SEO
 function makistyle_cmb2_seo_contador_script()
@@ -369,7 +370,7 @@ function makistyle_cmb2_seo_contador_script()
 	$screen = get_current_screen();
 	if (
 		!$screen ||
-		!in_array($screen->post_type, ['page', 'tienda_pt', 'post'])
+		!in_array($screen->post_type, ['page', 'tienda_pt', 'post', 'product'])
 	) {
 		return;
 	}?>
@@ -405,3 +406,69 @@ function makistyle_cmb2_seo_contador_script()
 <?php
 }
 add_action('admin_footer', 'makistyle_cmb2_seo_contador_script');
+
+/**
+ * PRODUCTOS DE WOOCOMMERCE
+ */
+function makistyle_cmb2_productos()
+{
+	$prefix = 'makistyle_cmb2_woocommerce_';
+
+	$product_info_box = new_cmb2_box([
+		'id'           => $prefix . 'product_metaboxes',
+		'title'        => esc_html__('Información adicional del producto', 'cmb2'),
+		'object_types' => ['product'],
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'show_names'   => true,
+		'show_in_rest' => true,
+	]);
+
+	$product_info_box->add_field([
+		'name'        => esc_html__('Fecha de lanzamiento', 'cmb2'),
+		'desc'        => esc_html__('Fecha de lanzamiento del producto (puede no coincidir con la de publicación)', 'cmb2'),
+		'id'          => $prefix . 'fecha_lanzamiento2',
+		'type'        => 'text_date_timestamp',
+		'date_format' => 'd-m-Y',
+	]);
+
+	$product_info_box->add_field([
+		'name' => esc_html__('Enlace de compra alternativo', 'cmb2'),
+		'desc' => esc_html__('Enlace alternativo de compra en una tienda externa (si el producto no se registra como externo/afiliado).', 'cmb2'),
+		'id'   => $prefix . 'enlace_compra',
+		'type' => 'text_url',
+	]);
+
+	$product_info_box->add_field([
+		'name' => esc_html__('Autores', 'cmb2'),
+		'desc' => esc_html__('Autores del producto (pueden no coincidir con el autor de la publicación).', 'cmb2'),
+		'id'   => $prefix . 'autores',
+		'type' => 'text',
+	]);
+
+
+	$product_videos_box = new_cmb2_box([
+		'id'           => $prefix . 'product_video_metaboxes',
+		'title'        => esc_html__('Vídeo asociado al producto', 'cmb2'),
+		'object_types' => ['product'],
+		'context'      => 'normal',
+		'priority'     => 'high',
+		'show_names'   => true,
+		'show_in_rest' => true,
+	]);
+
+	$product_videos_box->add_field([
+		'name' => esc_html__('ID de Youtube destacado', 'cmb2'),
+		'desc' => esc_html__('Añade un ID de Youtube asociado al producto para reproducir su vídeo.', 'cmb2'),
+		'id'   => $prefix . 'id_youtube_destacado',
+		'type' => 'text',
+	]);
+
+	$product_videos_box->add_field([
+		'name' => esc_html__('URL de vídeo local', 'cmb2'),
+		'desc' => esc_html__('URL de un vídeo local (del sistema de ficheros) asociado al producto.', 'cmb2'),
+		'id'   => $prefix . 'url_video_local',
+		'type' => 'file',
+	]);
+}
+add_action('cmb2_init', 'makistyle_cmb2_productos');

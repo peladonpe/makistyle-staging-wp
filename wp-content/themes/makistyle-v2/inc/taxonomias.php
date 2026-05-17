@@ -127,3 +127,45 @@ function makistyle_etiquetas_tienda_taxonomia()
     register_taxonomy('etiquetas_tienda_taxonomia', array('tienda_pt'), $args);
 }
 add_action('init', 'makistyle_etiquetas_tienda_taxonomia');
+
+function makistyle_descuentos_taxonomia()
+{
+
+    $labels = array(
+        'name'                       => _x('Descuentos', 'Taxonomy General Name', 'makistyle'),
+        'singular_name'              => _x('Descuento', 'Taxonomy Singular Name', 'makistyle'),
+        'menu_name'                  => __('Descuentos', 'makistyle'),
+        'all_items'                  => __('Descuentos', 'makistyle'),
+        'parent_item'                => __('Descuento Padre', 'makistyle'),
+        'parent_item_colon'          => __('Descuento padre:', 'makistyle'),
+        'new_item_name'              => __('Agregar Nuevo Descuento', 'makistyle'),
+        'add_new_item'               => __('Agregar Nuevo Descuento', 'makistyle'),
+        'edit_item'                  => __('Editar Descuento', 'makistyle'),
+        'update_item'                => __('Actualizar Descuento', 'makistyle'),
+        'view_item'                  => __('Ver Descuento', 'makistyle'),
+        'separate_items_with_commas' => __('Separado por comas', 'makistyle'),
+        'add_or_remove_items'        => __('Agregar o Borrar Descuento', 'makistyle'),
+        'choose_from_most_used'      => __('Elegir de los más usados', 'makistyle'),
+        'popular_items'              => __('Descuentos Populares', 'makistyle'),
+        'search_items'               => __('Buscar Descuentos', 'makistyle'),
+        'not_found'                  => __('No encontrado', 'makistyle'),
+        'no_terms'                   => __('Sin Descuentos', 'makistyle'),
+        'items_list'                 => __('Lista de Descuentos', 'makistyle'),
+        'items_list_navigation'      => __('Navegación de Descuentos', 'makistyle'),
+    );
+    $args = array(
+        'labels'                     => $labels,
+        'hierarchical'               => true,
+        'public'                     => true,
+        'query_var'                 => true,
+        'rewrite'                   => array('slug' => 'descuento-tienda'),
+        'show_ui'                    => true,
+        'show_admin_column'          => false,
+        'show_in_nav_menus'          => true,
+        'show_tagcloud'              => true,
+        'show_in_rest'              => true
+    );
+    register_taxonomy('descuentos_taxonomia', array('product'), $args);
+}
+add_action('init', 'makistyle_descuentos_taxonomia');
+

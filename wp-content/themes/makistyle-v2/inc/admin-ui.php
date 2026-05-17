@@ -26,6 +26,43 @@ add_filter('manage_post_posts_columns', 'makistyle_add_post_info_column');
 add_filter('manage_tienda_pt_posts_columns', 'makistyle_add_post_info_column');
 add_filter('manage_page_posts_columns', 'makistyle_add_post_info_column');
 
+// Columnas específicas para productos WooCommerce
+function makistyle_custom_product_columns($columns)
+{
+	$new_columns = [];
+	foreach ($columns as $key => $title) {
+		if ($key === 'sku') {
+			$new_columns['post_info'] = __('Información', 'makistyle');
+		} elseif (strpos(strtolower($title), 'marca') !== false || strpos($key, 'brand') !== false || $key === 'product_brand') {
+			$new_columns['fecha_lanzamiento'] = __('Fecha Lanzamiento', 'makistyle');
+		} elseif ($key === 'product_tag') {
+			$new_columns['promociones'] = __('Promociones', 'makistyle');
+		} elseif ($key === 'date') {
+			// Quitar la columna de fecha de publicación nativa
+			continue;
+		} elseif ($key === 'thumb') {
+			// Quitar la columna de la imagen miniatura nativa de WooCommerce
+			continue;
+		} else {
+			$new_columns[$key] = $title;
+		}
+	}
+	
+	// Por si acaso no se encontraron para reemplazarlos, asegurar que estén:
+	if (!isset($new_columns['post_info'])) {
+		$new_columns['post_info'] = __('Información', 'makistyle');
+	}
+	if (!isset($new_columns['fecha_lanzamiento'])) {
+		$new_columns['fecha_lanzamiento'] = __('Fecha Lanzamiento', 'makistyle');
+	}
+	if (!isset($new_columns['promociones'])) {
+		$new_columns['promociones'] = __('Promociones', 'makistyle');
+	}
+
+	return $new_columns;
+}
+add_filter('manage_edit-product_columns', 'makistyle_custom_product_columns', 20);
+
 function makistyle_show_post_info_column($column_name, $post_id)
 {
 	if ($column_name === 'post_info') {
@@ -52,7 +89,8 @@ function makistyle_show_post_info_column($column_name, $post_id)
 
 		if (
 			get_post_type($post_id) === 'post' ||
-			get_post_type($post_id) === 'tienda_pt'
+			get_post_type($post_id) === 'tienda_pt' ||
+			get_post_type($post_id) === 'product'
 		) {
 
 			$msgImgDestacada =
@@ -77,11 +115,17 @@ function makistyle_show_post_info_column($column_name, $post_id)
 			}
 			$msgImgDestacada .= '</span></p>';
 
-			$linkVideo = get_post_meta(
-				$post_id,
-				'makistyle_cmb2_todos_pt_id_youtube_destacado',
-				true,
-			);
+			$meta_key_yt = get_post_type($post_id) === 'product'
+				? 'makistyle_cmb2_woocommerce_id_youtube_destacado'
+				: 'makistyle_cmb2_todos_pt_id_youtube_destacado';
+			$meta_key_local = get_post_type($post_id) === 'product'
+				? 'makistyle_cmb2_woocommerce_url_video_local'
+				: 'makistyle_cmb2_todos_pt_url_video_local';
+
+			$linkVideo = get_post_meta($post_id, $meta_key_yt, true);
+			if (empty($linkVideo)) {
+				$linkVideo = get_post_meta($post_id, $meta_key_local, true);
+			}
 			$msgLinkVideo =
 				'<p style="margin: 5px 0; color: #3180FC;"><strong>LINK VIDEO:</strong> ';
 			$msgLinkVideo .= !empty($linkVideo)
@@ -153,6 +197,12 @@ add_action(
 );
 add_action(
 	'manage_page_posts_custom_column',
+	'makistyle_show_post_info_column',
+	10,
+	2,
+);
+add_action(
+	'manage_product_posts_custom_column',
 	'makistyle_show_post_info_column',
 	10,
 	2,
@@ -358,11 +408,11 @@ add_filter(
 function makistyle_show_fecha_lanzamiento_column($column_name, $post_id)
 {
 	if ($column_name === 'fecha_lanzamiento') {
-		$timestamp = get_post_meta(
-			$post_id,
-			'makistyle_cmb2_tienda_fecha_lanzamiento2',
-			true,
-		);
+		$meta_key = get_post_type($post_id) === 'product'
+			? 'makistyle_cmb2_woocommerce_fecha_lanzamiento2'
+			: 'makistyle_cmb2_tienda_fecha_lanzamiento2';
+
+		$timestamp = get_post_meta($post_id, $meta_key, true);
 		if ($timestamp) {
 			echo '<span style="color: #3180FC;">' .
 				esc_html(date('d-m-Y', $timestamp)) .
@@ -378,6 +428,12 @@ add_action(
 	10,
 	2,
 );
+add_action(
+	'manage_product_posts_custom_column',
+	'makistyle_show_fecha_lanzamiento_column',
+	10,
+	2,
+);
 
 function makistyle_sortable_fecha_lanzamiento_column($sortable_columns)
 {
@@ -388,6 +444,10 @@ add_filter(
 	'manage_edit-tienda_pt_sortable_columns',
 	'makistyle_sortable_fecha_lanzamiento_column',
 );
+add_filter(
+	'manage_edit-product_sortable_columns',
+	'makistyle_sortable_fecha_lanzamiento_column',
+);
 
 function makistyle_orderby_fecha_lanzamiento($query)
 {
@@ -395,24 +455,63 @@ function makistyle_orderby_fecha_lanzamiento($query)
 		return;
 	}
 
-	if ($query->get('post_type') !== 'tienda_pt') {
+	$post_type = $query->get('post_type');
+	if ($post_type !== 'tienda_pt' && $post_type !== 'product') {
 		return;
 	}
 
-	$orderby = $query->get('orderby');
+	$orderby  = $query->get('orderby');
+	$meta_key = ($post_type === 'product')
+		? 'makistyle_cmb2_woocommerce_fecha_lanzamiento2'
+		: 'makistyle_cmb2_tienda_fecha_lanzamiento2';
 
 	// Orden manual por la columna fecha_lanzamiento (clic en cabecera)
 	if ($orderby === 'fecha_lanzamiento') {
-		$query->set('meta_key', 'makistyle_cmb2_tienda_fecha_lanzamiento2');
+		$query->set('meta_key', $meta_key);
 		$query->set('orderby', 'meta_value_num');
 		return;
 	}
 
 	// Orden por defecto: fecha de lanzamiento más reciente arriba
 	if (empty($orderby)) {
-		$query->set('meta_key', 'makistyle_cmb2_tienda_fecha_lanzamiento2');
+		$query->set('meta_key', $meta_key);
 		$query->set('orderby', 'meta_value_num');
 		$query->set('order', 'DESC');
 	}
 }
 add_action('pre_get_posts', 'makistyle_orderby_fecha_lanzamiento');
+
+/**
+ * Mostrar el contenido de la columna de Promociones en los productos de WooCommerce
+ */
+function makistyle_show_product_promociones_column($column_name, $post_id)
+{
+	if ($column_name === 'promociones') {
+		echo '<span style="color: #999;">—</span>';
+	}
+}
+add_action(
+	'manage_product_posts_custom_column',
+	'makistyle_show_product_promociones_column',
+	10,
+	2,
+);
+
+/**
+ * Añadir acceso directo a Cupones bajo el menú de Productos de WooCommerce
+ */
+function makistyle_add_coupons_submenu_under_products()
+{
+	add_submenu_page(
+		'edit.php?post_type=product',       // Menú padre (Productos)
+		__('Cupones', 'woocommerce'),       // Título de la página
+		__('Cupones', 'woocommerce'),       // Título del menú
+		'manage_woocommerce',               // Capacidad requerida
+		'edit.php?post_type=shop_coupon',   // Slug / URL de destino
+		null,                                // Callback (ninguno, es un enlace directo)
+		6
+	);
+}
+add_action('admin_menu', 'makistyle_add_coupons_submenu_under_products');
+
+

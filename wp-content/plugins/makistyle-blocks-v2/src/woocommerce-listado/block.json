@@ -1,22 +1,19 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "makistyle-blocks-v2/descripcion-post",
-	"version": "1.0.0",
-	"title": "Descripción Post",
+	"name": "makistyle-blocks-v2/woocommerce-listado",
+	"version": "2.0.0",
+	"title": "WooCommerce / Listado",
 	"category": "makistyle-v2",
-	"description": "Caja de texto enriquecida para descripción del post",
+	"description": "Lista de productos de WooCommerce",
 	"example": {},
 	"supports": {
-		"html": false,
-		"typography": {
-			"fontSize": true
-		}
+		"html": false
 	},
 	"attributes": {
-		"fontSize": {
-			"type": "string",
-			"default": "medium"
+		"esPaginado": {
+			"type": "boolean",
+			"default": true
 		}
 	},
 	"textdomain": "makistyle",

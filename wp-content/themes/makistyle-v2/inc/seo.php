@@ -15,7 +15,7 @@ function makistyle_render_seo_description_meta()
 	$seo_description = '';
 
 	// Comprobar si es una vista individual de los post types requeridos
-	if (is_singular(['post', 'page', 'tienda_pt'])) {
+	if (is_singular(['post', 'page', 'tienda_pt', 'product'])) {
 		$post_id = get_queried_object_id();
 
 		if ($post_id) {

@@ -14,11 +14,6 @@
     }
   },
   "attributes": {
-    "descriptionContent": {
-      "type": "string",
-      "source": "html",
-      "selector": ".wp-block-makistyle-blocks-v2-descripcion-post-content"
-    },
     "fontSize": {
       "type": "string",
       "default": "medium"
@@ -26,5 +21,6 @@
   },
   "textdomain": "makistyle",
   "editorScript": "file:./index.js",
+  "render": "file:./render.php",
   "viewScript": "file:./view.js"
 }

@@ -78,10 +78,10 @@ var SvgMakistyleLogo = function SvgMakistyleLogo(props) {
 
 /***/ },
 
-/***/ "./src/descripcion-post/edit.js"
-/*!**************************************!*\
-  !*** ./src/descripcion-post/edit.js ***!
-  \**************************************/
+/***/ "./src/woocommerce-listado/edit.js"
+/*!*****************************************!*\
+  !*** ./src/woocommerce-listado/edit.js ***!
+  \*****************************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -92,8 +92,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/data */ "@wordpress/data");
-/* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__);
 
@@ -104,44 +104,25 @@ function Edit({
   attributes,
   setAttributes
 }) {
-  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
-
-  // Obtener los meta del post actual
   const {
-    meta
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
-    const {
-      getEditedPostAttribute
-    } = select('core/editor');
-    return {
-      meta: getEditedPostAttribute('meta')
-    };
-  }, []);
-  const {
-    makistyle_cmb2_descripcion_post: descriptionContentMeta
-  } = meta || {};
-
-  // Obtener función para actualizar el post
-  const {
-    editPost
-  } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useDispatch)('core/editor');
-  const onChangeContent = newContent => {
-    editPost({
-      meta: {
-        ...meta,
-        makistyle_cmb2_descripcion_post: newContent
-      }
+    esPaginado
+  } = attributes;
+  const onChangeEsPaginado = newValue => {
+    setAttributes({
+      esPaginado: newValue
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-    ...blockProps,
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-      tagName: "div",
-      className: "wp-block-makistyle-blocks-v2-descripcion-post-content",
-      value: descriptionContentMeta || '',
-      onChange: onChangeContent,
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Escribe la descripción del post...', 'makistyle')
-    })
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+      className: "listado-descripcion",
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Aquí se mostrarán los productos de woocommerce', 'makistyle')
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+      __nextHasNoMarginBottom: true,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Paginacion', 'makistyle'),
+      checked: esPaginado,
+      onChange: onChangeEsPaginado
+    })]
   });
 }
 
@@ -187,13 +168,13 @@ module.exports = window["wp"]["blocks"];
 
 /***/ },
 
-/***/ "@wordpress/data"
-/*!******************************!*\
-  !*** external ["wp","data"] ***!
-  \******************************/
+/***/ "@wordpress/components"
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
 (module) {
 
-module.exports = window["wp"]["data"];
+module.exports = window["wp"]["components"];
 
 /***/ },
 
@@ -207,13 +188,13 @@ module.exports = window["wp"]["i18n"];
 
 /***/ },
 
-/***/ "./src/descripcion-post/block.json"
-/*!*****************************************!*\
-  !*** ./src/descripcion-post/block.json ***!
-  \*****************************************/
+/***/ "./src/woocommerce-listado/block.json"
+/*!********************************************!*\
+  !*** ./src/woocommerce-listado/block.json ***!
+  \********************************************/
 (module) {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"makistyle-blocks-v2/descripcion-post","version":"1.0.0","title":"Descripción Post","category":"makistyle-v2","description":"Caja de texto enriquecida para descripción del post","example":{},"supports":{"html":false,"typography":{"fontSize":true}},"attributes":{"fontSize":{"type":"string","default":"medium"}},"textdomain":"makistyle","editorScript":"file:./index.js","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"makistyle-blocks-v2/woocommerce-listado","version":"2.0.0","title":"WooCommerce / Listado","category":"makistyle-v2","description":"Lista de productos de WooCommerce","example":{},"supports":{"html":false},"attributes":{"esPaginado":{"type":"boolean","default":true}},"textdomain":"makistyle","editorScript":"file:./index.js","render":"file:./render.php","viewScript":"file:./view.js"}');
 
 /***/ }
 
@@ -294,14 +275,14 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
 (() => {
-/*!***************************************!*\
-  !*** ./src/descripcion-post/index.js ***!
-  \***************************************/
+/*!******************************************!*\
+  !*** ./src/woocommerce-listado/index.js ***!
+  \******************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/descripcion-post/edit.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/descripcion-post/block.json");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/woocommerce-listado/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./src/woocommerce-listado/block.json");
 /* harmony import */ var _makistyle_logo_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../makistyle-logo.svg */ "./src/makistyle-logo.svg");
 
 
@@ -311,8 +292,7 @@ __webpack_require__.r(__webpack_exports__);
   icon: {
     src: _makistyle_logo_svg__WEBPACK_IMPORTED_MODULE_3__.ReactComponent
   },
-  edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"],
-  save: () => null
+  edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 })();
 

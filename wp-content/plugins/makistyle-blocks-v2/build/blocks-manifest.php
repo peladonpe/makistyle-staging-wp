@@ -257,11 +257,6 @@ return array(
 			)
 		),
 		'attributes' => array(
-			'descriptionContent' => array(
-				'type' => 'string',
-				'source' => 'html',
-				'selector' => '.wp-block-makistyle-blocks-v2-descripcion-post-content'
-			),
 			'fontSize' => array(
 				'type' => 'string',
 				'default' => 'medium'
@@ -269,6 +264,7 @@ return array(
 		),
 		'textdomain' => 'makistyle',
 		'editorScript' => 'file:./index.js',
+		'render' => 'file:./render.php',
 		'viewScript' => 'file:./view.js'
 	),
 	'fecha-actual' => array(
@@ -538,6 +534,31 @@ return array(
 		'editorScript' => 'file:./index.js',
 		'viewScript' => 'file:./view.js',
 		'render' => 'file:./render.php'
+	),
+	'woocommerce-listado' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'makistyle-blocks-v2/woocommerce-listado',
+		'version' => '2.0.0',
+		'title' => 'WooCommerce / Listado',
+		'category' => 'makistyle-v2',
+		'description' => 'Lista de productos de WooCommerce',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'attributes' => array(
+			'esPaginado' => array(
+				'type' => 'boolean',
+				'default' => true
+			)
+		),
+		'textdomain' => 'makistyle',
+		'editorScript' => 'file:./index.js',
+		'render' => 'file:./render.php',
+		'viewScript' => 'file:./view.js'
 	),
 	'youtube-destacado' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
