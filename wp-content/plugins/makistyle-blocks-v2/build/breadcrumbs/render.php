@@ -9,12 +9,20 @@ $body_classes = get_body_class();
 $home_url   = esc_url(home_url('/'));
 $home_texto = __('Home', 'makistyle');
 
-if (in_array('single-tienda_pt', $body_classes)) {
+if (in_array('single-tienda_pt', $body_classes) || (function_exists('is_product') && is_product())) {
 	// ── Contexto: producto de tienda ──────────────────────────────────────────
-	$tienda_page = get_page_by_path('tienda');
-	$tienda_url  = $tienda_page
-		? get_permalink($tienda_page->ID)
-		: home_url('/tienda/');
+	$tienda_url = home_url('/tienda/');
+	if (function_exists('wc_get_page_id')) {
+		$shop_page_id = wc_get_page_id('shop');
+		if ($shop_page_id > 0) {
+			$tienda_url = get_permalink($shop_page_id);
+		}
+	} else {
+		$tienda_page = get_page_by_path('tienda');
+		if ($tienda_page) {
+			$tienda_url = get_permalink($tienda_page->ID);
+		}
+	}
 
 	$items = [
 		['url' => $home_url,             'texto' => $home_texto,                   'enlace' => true],
@@ -44,16 +52,30 @@ if (in_array('single-tienda_pt', $body_classes)) {
 		['url' => $home_url,          'texto' => $home_texto,             'enlace' => true],
 		['url' => esc_url($blog_url), 'texto' => __('Blog', 'makistyle'), 'enlace' => false],
 	];
-} elseif (in_array('archive', $body_classes) && in_array('tax-tipo_recurso_taxonomia', $body_classes)) {
-	// ── Contexto: archivo de tienda por tipo de recurso ───────────────────────
-	$tienda_page = get_page_by_path('tienda');
-	$tienda_url  = $tienda_page
-		? get_permalink($tienda_page->ID)
-		: home_url('/tienda/');
+} elseif (in_array('archive', $body_classes) && (in_array('tax-tipo_recurso_taxonomia', $body_classes) || (function_exists('is_product_taxonomy') && is_product_taxonomy()))) {
+	// ── Contexto: archivo de tienda por tipo de recurso o taxonomía de producto
+	$tienda_url = home_url('/tienda/');
+	if (function_exists('wc_get_page_id')) {
+		$shop_page_id = wc_get_page_id('shop');
+		if ($shop_page_id > 0) {
+			$tienda_url = get_permalink($shop_page_id);
+		}
+	} else {
+		$tienda_page = get_page_by_path('tienda');
+		if ($tienda_page) {
+			$tienda_url = get_permalink($tienda_page->ID);
+		}
+	}
 
 	$items = [
 		['url' => $home_url,             'texto' => $home_texto,              'enlace' => true],
 		['url' => esc_url($tienda_url),  'texto' => __('Tienda', 'makistyle'), 'enlace' => false],
+	];
+} elseif (function_exists('is_shop') && is_shop()) {
+	// ── Contexto: tienda (catálogo) de WooCommerce ────────────────────────────
+	$items = [
+		['url' => $home_url, 'texto' => $home_texto, 'enlace' => true],
+		['url' => '',        'texto' => __('Tienda', 'makistyle'), 'enlace' => false],
 	];
 } elseif (is_front_page()) {
 	// ── Contexto: home ────────────────────────────────────────────────────────

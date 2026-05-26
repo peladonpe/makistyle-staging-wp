@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "makistyle-blocks-v2/woocommerce-youtube-destacado",
+  "version": "2.0.0",
+  "title": "WooCommerce / Youtube destacado",
+  "category": "makistyle-v2",
+  "description": "Video de youtube incrustado para productos de WooCommerce",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "autoplay": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "textdomain": "makistyle",
+  "editorScript": "file:./index.js",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}

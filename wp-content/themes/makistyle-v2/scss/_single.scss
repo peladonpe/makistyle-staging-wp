@@ -23,7 +23,8 @@
 	}
 }
 
-.single-tienda_pt {
+.single-tienda_pt,
+.single-product {
 	.titulo {
 		@include m.padding-y(50px);
 	}

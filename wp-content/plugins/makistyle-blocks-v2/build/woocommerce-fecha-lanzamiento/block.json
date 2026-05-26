@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "makistyle-blocks-v2/woocommerce-fecha-lanzamiento",
+  "version": "2.0.0",
+  "title": "WooCommerce / Fecha lanzam.",
+  "category": "makistyle-v2",
+  "description": "Muestra la fecha de lanzamiento del producto (WooCommerce)",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {},
+  "textdomain": "makistyle",
+  "editorScript": "file:./index.js",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}

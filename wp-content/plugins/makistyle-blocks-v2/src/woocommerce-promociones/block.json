@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "makistyle-blocks-v2/woocommerce-promociones",
+	"version": "2.0.0",
+	"title": "WooCommerce / Promociones",
+	"category": "makistyle-v2",
+	"description": "Muestra las promociones del producto (WooCommerce)",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "makistyle",
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

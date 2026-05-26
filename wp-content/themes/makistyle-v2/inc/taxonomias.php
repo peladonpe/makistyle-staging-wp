@@ -169,3 +169,43 @@ function makistyle_descuentos_taxonomia()
 }
 add_action('init', 'makistyle_descuentos_taxonomia');
 
+// function makistyle_cupones_taxonomia()
+// {
+//     $labels = array(
+//         'name'                       => _x('Cupones', 'Taxonomy General Name', 'makistyle'),
+//         'singular_name'              => _x('Cupón', 'Taxonomy Singular Name', 'makistyle'),
+//         'menu_name'                  => __('Cupones', 'makistyle'),
+//         'all_items'                  => __('Todos los Cupones', 'makistyle'),
+//         'parent_item'                => __('Cupón Padre', 'makistyle'),
+//         'parent_item_colon'          => __('Cupón padre:', 'makistyle'),
+//         'new_item_name'              => __('Agregar Nuevo Cupón', 'makistyle'),
+//         'add_new_item'               => __('Agregar Nuevo Cupón', 'makistyle'),
+//         'edit_item'                  => __('Editar Cupón', 'makistyle'),
+//         'update_item'                => __('Actualizar Cupón', 'makistyle'),
+//         'view_item'                  => __('Ver Cupón', 'makistyle'),
+//         'separate_items_with_commas' => __('Separado por comas', 'makistyle'),
+//         'add_or_remove_items'        => __('Agregar o Borrar Cupón', 'makistyle'),
+//         'choose_from_most_used'      => __('Elegir de los más usados', 'makistyle'),
+//         'popular_items'              => __('Cupones Populares', 'makistyle'),
+//         'search_items'               => __('Buscar Cupones', 'makistyle'),
+//         'not_found'                  => __('No encontrado', 'makistyle'),
+//         'no_terms'                   => __('Sin Cupones', 'makistyle'),
+//         'items_list'                 => __('Lista de Cupones', 'makistyle'),
+//         'items_list_navigation'      => __('Navegación de Cupones', 'makistyle'),
+//     );
+//     $args = array(
+//         'labels'                     => $labels,
+//         'hierarchical'               => true,
+//         'public'                     => true,
+//         'query_var'                 => true,
+//         'rewrite'                   => array('slug' => 'cupon-tienda'),
+//         'show_ui'                    => true,
+//         'show_admin_column'          => false,
+//         'show_in_nav_menus'          => true,
+//         'show_tagcloud'              => true,
+//         'show_in_rest'              => true
+//     );
+//     register_taxonomy('cupones_taxonomia', array('product'), $args);
+// }
+// add_action('init', 'makistyle_cupones_taxonomia');
+

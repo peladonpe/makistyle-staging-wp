@@ -535,6 +535,119 @@ return array(
 		'viewScript' => 'file:./view.js',
 		'render' => 'file:./render.php'
 	),
+	'woocommerce-autores' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'makistyle-blocks-v2/woocommerce-autores',
+		'version' => '2.0.0',
+		'title' => 'WooCommerce / Autores',
+		'category' => 'makistyle-v2',
+		'description' => 'Muestra los autores del producto (WooCommerce)',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'attributes' => array(
+			
+		),
+		'textdomain' => 'makistyle',
+		'editorScript' => 'file:./index.js',
+		'render' => 'file:./render.php',
+		'viewScript' => 'file:./view.js'
+	),
+	'woocommerce-boton-comprar' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'makistyle-blocks-v2/woocommerce-boton-comprar',
+		'version' => '2.0.0',
+		'title' => 'WooCommerce / Botón comprar',
+		'category' => 'makistyle-v2',
+		'description' => 'Botón de compra o descarga asociado al producto (WooCommerce)',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'attributes' => array(
+			
+		),
+		'textdomain' => 'makistyle',
+		'editorScript' => 'file:./index.js',
+		'render' => 'file:./render.php',
+		'viewScript' => 'file:./view.js'
+	),
+	'woocommerce-categoria' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'makistyle-blocks-v2/woocommerce-categoria',
+		'version' => '2.0.0',
+		'title' => 'WooCommerce / Categoria',
+		'category' => 'makistyle-v2',
+		'description' => 'Muestra la categoría del producto (WooCommerce)',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'textdomain' => 'makistyle',
+		'editorScript' => 'file:./index.js',
+		'viewScript' => 'file:./view.js',
+		'render' => 'file:./render.php'
+	),
+	'woocommerce-descripcion' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'makistyle-blocks-v2/woocommerce-descripcion',
+		'version' => '2.0.0',
+		'title' => 'WooCommerce / Descripcion',
+		'category' => 'makistyle-v2',
+		'description' => 'Muestra la descripción (larga) del producto (WooCommerce)',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false,
+			'typography' => array(
+				'fontSize' => true
+			)
+		),
+		'attributes' => array(
+			'fontSize' => array(
+				'type' => 'string',
+				'default' => 'medium'
+			)
+		),
+		'textdomain' => 'makistyle',
+		'editorScript' => 'file:./index.js',
+		'render' => 'file:./render.php',
+		'viewScript' => 'file:./view.js'
+	),
+	'woocommerce-fecha-lanzamiento' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'makistyle-blocks-v2/woocommerce-fecha-lanzamiento',
+		'version' => '2.0.0',
+		'title' => 'WooCommerce / Fecha lanzam.',
+		'category' => 'makistyle-v2',
+		'description' => 'Muestra la fecha de lanzamiento del producto (WooCommerce)',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'attributes' => array(
+			
+		),
+		'textdomain' => 'makistyle',
+		'editorScript' => 'file:./index.js',
+		'render' => 'file:./render.php',
+		'viewScript' => 'file:./view.js'
+	),
 	'woocommerce-listado' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
@@ -551,6 +664,49 @@ return array(
 		),
 		'attributes' => array(
 			'esPaginado' => array(
+				'type' => 'boolean',
+				'default' => true
+			)
+		),
+		'textdomain' => 'makistyle',
+		'editorScript' => 'file:./index.js',
+		'render' => 'file:./render.php',
+		'viewScript' => 'file:./view.js'
+	),
+	'woocommerce-promociones' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'makistyle-blocks-v2/woocommerce-promociones',
+		'version' => '2.0.0',
+		'title' => 'WooCommerce / Promociones',
+		'category' => 'makistyle-v2',
+		'description' => 'Muestra las promociones del producto (WooCommerce)',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'textdomain' => 'makistyle',
+		'editorScript' => 'file:./index.js',
+		'render' => 'file:./render.php'
+	),
+	'woocommerce-youtube-destacado' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'makistyle-blocks-v2/woocommerce-youtube-destacado',
+		'version' => '2.0.0',
+		'title' => 'WooCommerce / Youtube destacado',
+		'category' => 'makistyle-v2',
+		'description' => 'Video de youtube incrustado para productos de WooCommerce',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'attributes' => array(
+			'autoplay' => array(
 				'type' => 'boolean',
 				'default' => true
 			)

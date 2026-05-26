@@ -93,17 +93,93 @@ if (!function_exists('mkv2_woocommerce_get_articulo')):
 				get_the_permalink(),
 				'mkv2-card-img-link',
 				'mkv2-card-figure',
-				'mkv2-card-img'
+				'mkv2-card-img',
 			);
 		}
 
-		// ── Badge de precio (Sin promociones por ahora) ───────────────────────────
+		// ── Descuentos: calcular descuentos activos de la taxonomía ──────────────
+		$maxDescuentoDescuentos = 0;
+		$descuentos = get_the_terms($postId, 'descuentos_taxonomia');
+		if ($descuentos && !is_wp_error($descuentos)) {
+			foreach ($descuentos as $descuento) {
+				$descuentoActivo = get_term_meta(
+					$descuento->term_id,
+					'makistyle_cmb2_descuentos_taxonomia_descuento_activo',
+					true,
+				);
+				$fechaInicio = (int) get_term_meta(
+					$descuento->term_id,
+					'makistyle_cmb2_descuentos_taxonomia_fecha_inicio',
+					true,
+				);
+				$fechaFinal = (int) get_term_meta(
+					$descuento->term_id,
+					'makistyle_cmb2_descuentos_taxonomia_fecha_final',
+					true,
+				);
+				$ahora = time();
+
+				$dentroDeRango = true;
+				// if (!empty($fechaInicio) && $ahora < $fechaInicio) {
+				// 	$dentroDeRango = false;
+				// }
+				// if (!empty($fechaFinal) && $ahora > $fechaFinal) {
+				// 	$dentroDeRango = false;
+				// }
+				$dentroDeRango =
+					$fechaInicio &&
+					$fechaFinal &&
+					$ahora >= $fechaInicio &&
+					$ahora <= $fechaFinal;
+
+				if ($descuentoActivo !== 'on' || !$dentroDeRango) {
+					continue;
+				}
+
+				$porcentajeDescuento = (int) get_term_meta(
+					$descuento->term_id,
+					'makistyle_cmb2_descuentos_taxonomia_porcentaje_descuento',
+					true,
+				);
+
+				if (
+					$porcentajeDescuento &&
+					$porcentajeDescuento > $maxDescuentoDescuentos
+				) {
+					$maxDescuentoDescuentos = $porcentajeDescuento;
+				}
+			}
+		}
+
+		$precioOriginalVal = floatval($precio);
+		$precioFinal = $precioOriginalVal;
+		$hayDescuentos = false;
+
+		if ($precioOriginalVal > 0 && $maxDescuentoDescuentos > 0) {
+			$hayDescuentos = true;
+			$precioFinal =
+				$precioOriginalVal -
+				($precioOriginalVal * $maxDescuentoDescuentos) / 100;
+			if ($precioFinal < 0) {
+				$precioFinal = 0;
+			}
+		}
+
+		// ── Badge de precio ───────────────────────────────────────────────────────
 		$badgePrecio = '';
 		if ($precio !== '' && $precio !== false && $precio !== null) {
-			if (floatval($precio) == 0) {
+			if ($precioOriginalVal == 0) {
 				$textoBoton = 'GRATUITO';
+			} elseif ($hayDescuentos) {
+				$textoBoton =
+					'<span class="mkv2-precio-tachado">' .
+					number_format($precioOriginalVal, 2, ',', '.') .
+					' €</span> ' .
+					number_format($precioFinal, 2, ',', '.') .
+					' €';
 			} else {
-				$textoBoton = number_format(floatval($precio), 2, ',', '.') . ' €';
+				$textoBoton =
+					number_format($precioOriginalVal, 2, ',', '.') . ' €';
 			}
 			$badgePrecio = sprintf(
 				'<div class="mkv2-badge-precio-wrap">
@@ -145,81 +221,30 @@ if (!function_exists('mkv2_woocommerce_get_articulo')):
 endif;
 
 // ── Lógica principal ──────────────────────────────────────────────────────────
+// Usa el loop nativo de WordPress (main query), ya ordenado y filtrado por functions.php
 
-$cantidad = (int) get_option('posts_per_page', 6);
 $paginacion = isset($attributes['esPaginado'])
 	? (bool) $attributes['esPaginado']
 	: false;
 
-$args = [
-	'post_type' => 'product',
-	'posts_per_page' => $cantidad,
-	'paged' => get_query_var('paged', 1),
-	'orderby' => 'meta_value_num',
-	'meta_key' => 'makistyle_cmb2_woocommerce_fecha_lanzamiento2',
-	'order' => 'DESC',
-];
-
-// Filtro precio=0: pre-calcula IDs elegibles para que post__in permita paginar correctamente sobre el conjunto filtrado.
-$precioQueryString = get_query_var('precio');
-if ($precioQueryString === '0') {
-	$subQuery = new WP_Query([
-		'post_type' => 'product',
-		'posts_per_page' => -1,
-		'fields' => 'ids',
-		'suppress_filters' => true,
-	]);
-
-	$idsFiltrados = array_values(
-		array_filter($subQuery->posts, function ($id) {
-			$precio = '';
-			if (function_exists('wc_get_product')) {
-				$product = wc_get_product($id);
-				if ($product) {
-					$precio = $product->get_regular_price();
-				}
-			} else {
-				$precio = get_post_meta($id, '_regular_price', true);
-			}
-			return $precio !== '' && floatval($precio) == 0;
-		}),
-	);
-
-	$args['post__in'] = !empty($idsFiltrados) ? $idsFiltrados : [0];
-}
-
-$tienda = new WP_Query($args);
-
 $cards = '';
 $hay_resultados = false;
-while ($tienda->have_posts()):
-	$tienda->the_post();
+while (have_posts()):
+	the_post();
 	$hay_resultados = true;
 	$cards .= mkv2_woocommerce_get_articulo();
 endwhile;
 
 $paginacionHtml = '';
 if ($paginacion) {
-	$total_pages = $tienda->max_num_pages;
-	if ($total_pages > 1) {
-		$current_page = max(1, get_query_var('paged'));
-		$base_link = get_pagenum_link(1);
-		$base_path = strtok($base_link, '?'); // elimina el query string del base
-		$paginacionHtml = '<div class="paginacion">';
-		$paginacionHtml .= paginate_links([
-			'base' => trailingslashit($base_path) . '%_%',
-			'format' => 'page/%#%/',
-			'current' => $current_page,
-			'total' => $total_pages,
-			'add_args' => $precioQueryString === '0' ? ['precio' => '0'] : [],
-			'prev_text' => __('« Página anterior', 'makistyle'),
-			'next_text' => __('Página siguiente »', 'makistyle'),
-		]);
-		$paginacionHtml .= '</div>';
+	$pag_links = get_the_posts_pagination([
+		'prev_text' => __('« Página anterior', 'makistyle'),
+		'next_text' => __('Página siguiente »', 'makistyle'),
+	]);
+	if ($pag_links) {
+		$paginacionHtml = '<div class="paginacion">' . $pag_links . '</div>';
 	}
 }
-
-wp_reset_postdata();
 ?>
 <section <?php echo get_block_wrapper_attributes([
 	'class' => 'woocommerce__wrapper-listado-cards seccion',

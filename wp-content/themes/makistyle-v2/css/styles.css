@@ -550,20 +550,24 @@ footer a {
   gap: 1rem;
 }
 
-.single-tienda_pt .titulo {
+.single-tienda_pt .titulo,
+.single-product .titulo {
   padding-top: 50px;
   padding-bottom: 50px;
 }
-.single-tienda_pt .meta {
+.single-tienda_pt .meta,
+.single-product .meta {
   display: flex;
   justify-content: space-between;
   margin-bottom: 3rem;
   gap: 1rem;
 }
-.single-tienda_pt h3 {
+.single-tienda_pt h3,
+.single-product h3 {
   margin-bottom: 1.5rem;
 }
-.single-tienda_pt .autor {
+.single-tienda_pt .autor,
+.single-product .autor {
   margin-bottom: 1.5rem;
 }
 
@@ -2035,7 +2039,7 @@ body.admin-bar .offcanvas {
 .wp-block-makistyle-blocks-v2-menu-principal .mn-navbar {
   display: flex;
   align-items: center;
-  padding: 0 0.5rem;
+  padding: 0 1rem 0 0.5rem;
   margin-left: -1px;
   margin-right: -1px;
   min-height: 3rem;
@@ -2050,7 +2054,7 @@ body.admin-bar .offcanvas {
 }
 @media (min-width: 576px) {
   .wp-block-makistyle-blocks-v2-menu-principal .mn-navbar {
-    padding: 0 1rem;
+    padding: 0 1.5rem 0 1rem;
   }
 }
 .wp-block-makistyle-blocks-v2-menu-principal .mn-navbar__superior {
@@ -2058,6 +2062,66 @@ body.admin-bar .offcanvas {
   align-items: center;
   gap: 1rem;
   width: 100%;
+}
+.wp-block-makistyle-blocks-v2-menu-principal .mn-navbar__actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+@media (min-width: 576px) {
+  .wp-block-makistyle-blocks-v2-menu-principal .mn-navbar__actions {
+    gap: 1rem;
+  }
+}
+.wp-block-makistyle-blocks-v2-menu-principal .mn-navbar__actions .mn-navbar__action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fdfdfd;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.wp-block-makistyle-blocks-v2-menu-principal .mn-navbar__actions .mn-navbar__action:hover {
+  color: #01fff7;
+}
+.wp-block-makistyle-blocks-v2-menu-principal .mn-navbar__actions .mn-navbar__action svg {
+  width: 26px;
+  height: 26px;
+}
+.wp-block-makistyle-blocks-v2-menu-principal .mn-navbar__actions .mn-navbar__user-initial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: white;
+  color: #111111;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "Monoton", sans-serif;
+  transition: background-color 0.3s ease;
+}
+.wp-block-makistyle-blocks-v2-menu-principal .mn-navbar__actions .mn-navbar__user-initial:hover {
+  background-color: #01fff7;
+}
+.wp-block-makistyle-blocks-v2-menu-principal .mn-navbar__actions .mn-navbar__cart-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: #01fff7;
+  color: #111111;
+  font-size: 11px;
+  font-weight: bold;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .wp-block-makistyle-blocks-v2-menu-principal .mn-toggler {
   width: 2.5rem;
@@ -3642,6 +3706,167 @@ body.admin-bar .offcanvas {
     right: 0.75rem;
     transform: none;
   }
+}
+
+@keyframes mk-spinner-border {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.wp-block-makistyle-blocks-v2-woocommerce-youtube-destacado .mk-spinner-div {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wp-block-makistyle-blocks-v2-woocommerce-youtube-destacado .mk-spinner {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border: 0.25em solid #03fff7;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: mk-spinner-border 0.75s linear infinite;
+  box-sizing: border-box;
+}
+.wp-block-makistyle-blocks-v2-woocommerce-youtube-destacado .mk-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.wp-block-makistyle-blocks-v2-woocommerce-youtube-destacado .mkv2-yt-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.wp-block-makistyle-blocks-v2-woocommerce-youtube-destacado .mkv2-yt-fallback {
+  background-color: black;
+  margin: 0;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.wp-block-makistyle-blocks-v2-woocommerce-youtube-destacado .mkv2-yt-fallback img {
+  width: 100%;
+  object-fit: contain;
+  padding: 0;
+}
+@media (min-width: 782px) {
+  .wp-block-makistyle-blocks-v2-woocommerce-youtube-destacado .mkv2-yt-fallback img {
+    object-fit: contain;
+  }
+}
+.wp-block-makistyle-blocks-v2-woocommerce-youtube-destacado .mkv2-yt-fallback .mkv2-local-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+.wp-block-makistyle-blocks-v2-woocommerce-youtube-destacado .mkv2-unmute-btn {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: black;
+  color: #01fff7;
+  border: 1px solid #01fff7;
+  border-radius: 0.375rem;
+  padding: 0.4em 0.75em;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.wp-block-makistyle-blocks-v2-woocommerce-youtube-destacado .mkv2-unmute-btn:hover {
+  background-color: #01fff7;
+  color: black;
+}
+@media (min-width: 768px) {
+  .wp-block-makistyle-blocks-v2-woocommerce-youtube-destacado .mkv2-unmute-btn {
+    top: 0.75rem;
+    left: auto;
+    right: 0.75rem;
+    transform: none;
+  }
+}
+
+.wp-block-makistyle-blocks-v2-woocommerce-categoria.categoria__badge {
+  display: inline-block;
+  padding: 0.25em 0.6em;
+  border-radius: 4px;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #111111;
+  background-color: #01fff7;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+.wp-block-makistyle-blocks-v2-woocommerce-categoria.categoria__badge--hidden {
+  visibility: hidden;
+}
+
+.wp-block-makistyle-blocks-v2-woocommerce-autores {
+  color: white;
+  font-size: 1rem;
+}
+
+.wp-block-makistyle-blocks-v2-woocommerce-boton-comprar .botones-compra-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.wp-block-makistyle-blocks-v2-woocommerce-boton-comprar .botones-compra-wrapper .btn-precio-tienda {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background-color: transparent;
+  border: 2px solid #f9c351;
+  border-radius: 8px;
+  color: #f9c351;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  transition: all 0.1s ease;
+  text-align: center;
+  cursor: pointer;
+}
+.wp-block-makistyle-blocks-v2-woocommerce-boton-comprar .botones-compra-wrapper .btn-precio-tienda:hover {
+  background-color: #f9c351;
+  color: #000;
+}
+.wp-block-makistyle-blocks-v2-woocommerce-boton-comprar .botones-compra-wrapper .btn-precio-tienda.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+.wp-block-makistyle-blocks-v2-woocommerce-boton-comprar .botones-compra-wrapper .btn-precio-tienda .precio-tachado {
+  text-decoration: line-through;
+  margin-right: 16px;
+}
+
+.wp-block-makistyle-blocks-v2-woocommerce-promociones p {
+  cursor: text;
+  line-height: 2;
+  color: var(--wp--preset--color--color-primario);
+  font-size: var(--wp--preset--font-size--medium);
 }
 
 .monoton-regular {

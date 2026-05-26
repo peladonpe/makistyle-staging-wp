@@ -1,212 +1,278 @@
+@use "../variables" as *;
+
 .wp-block-makistyle-blocks-v2-menu-principal {
-  // ── Navbar ────────────────────────────────────────────────────────────
-  .mn-navbar {
-    display: flex;
-    align-items: center;
-    padding: 0 0.5rem;
-    margin-left: -1px;
-    margin-right: -1px;
-    min-height: 3rem;
-    position: sticky;
-    z-index: 3;
-    left: 0;
-    right: 0;
-    top: 0;
-    background-color: #111111;
-    border-bottom: 3px solid #01fff7;
-    color: #fdfdfd;
+	// ── Navbar ────────────────────────────────────────────────────────────
+	.mn-navbar {
+		display: flex;
+		align-items: center;
+		padding: 0 1rem 0 0.5rem;
+		margin-left: -1px;
+		margin-right: -1px;
+		min-height: 3rem;
+		position: sticky;
+		z-index: 3;
+		left: 0;
+		right: 0;
+		top: 0;
+		background-color: #111111;
+		border-bottom: 3px solid #01fff7;
+		color: #fdfdfd;
 
-    @media (min-width: 576px) {
-      padding: 0 1rem;
-    }
-  }
+		@media (min-width: 576px) {
+			padding: 0 1.5rem 0 1rem;
+		}
+	}
 
-  .mn-navbar__superior {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    width: 100%;
-  }
+	.mn-navbar__superior {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		width: 100%;
+	}
 
-  // ── Botón hamburguesa ─────────────────────────────────────────────────
-  .mn-toggler {
-    width: 2.5rem;
-    height: 2rem;
-    background: transparent;
-    border: 1px solid #fdfdfd;
-    border-radius: 4px;
-    cursor: pointer;
-    padding: 0;
-    margin-left: 0.2rem !important;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
+	.mn-navbar__actions {
+		margin-left: auto;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		@media (min-width: 576px) {
+			gap: 1rem;
+		}
 
-    &__bar {
-      display: block;
-      width: 26px;
-      height: 3px;
-      background-color: #fdfdfd;
-      border-radius: 2px;
-      transition:
-        transform 0.3s ease,
-        opacity 0.3s ease,
-        width 0.3s ease;
-    }
+		.mn-navbar__action {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: $blanco;
+			text-decoration: none;
+			position: relative;
+			transition: color 0.3s ease;
 
-    // Animación a X cuando el menú está abierto
-    &[aria-expanded="true"] {
-      .mn-toggler__bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-      }
-      .mn-toggler__bar:nth-child(2) {
-        opacity: 0;
-        width: 0;
-      }
-      .mn-toggler__bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-      }
-    }
-  }
+			&:hover {
+				color: $color-primario;
+			}
 
-  // ── Overlay ───────────────────────────────────────────────────────────
-  .mn-overlay {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.55);
-    z-index: 200;
-    opacity: 0;
-    visibility: hidden;
-    transition:
-      opacity 0.3s ease,
-      visibility 0.3s ease;
+			svg {
+				width: 26px;
+				height: 26px;
+			}
+		}
 
-    &.is-open {
-      opacity: 1;
-      visibility: visible;
-    }
-  }
+		.mn-navbar__user-initial {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 26px;
+			height: 26px;
+			border-radius: 50%;
+			background-color: white;
+			color: $negro;
+			font-size: 15px;
+			font-weight: bold;
+			text-transform: uppercase;
+			font-family: "Monoton", sans-serif;
+			transition: background-color 0.3s ease;
+			&:hover {
+				background-color: $color-primario;
+			}
+		}
 
-  // ── Panel offcanvas ───────────────────────────────────────────────────
-  .mn-offcanvas {
-    position: fixed;
-    top: 0;
-    left: -320px;
-    width: 280px;
-    height: 100%;
-    background-color: #1a1a1a;
-    color: #fdfdfd;
-    z-index: 300;
-    transition: left 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.4);
-    // padding-left: 1rem;
-    padding-left: 2rem;
-    padding-top: 2.5rem;
+		.mn-navbar__cart-count {
+			position: absolute;
+			top: -6px;
+			right: -8px;
+			background-color: $color-primario;
+			color: $negro;
+			font-size: 11px;
+			font-weight: bold;
+			width: 18px;
+			height: 18px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
 
-    // @media (min-width: 576px) {
-    // 	padding-left: 2rem;
-    // }
+	// ── Botón hamburguesa ─────────────────────────────────────────────────
+	.mn-toggler {
+		width: 2.5rem;
+		height: 2rem;
+		background: transparent;
+		border: 1px solid #fdfdfd;
+		border-radius: 4px;
+		cursor: pointer;
+		padding: 0;
+		margin-left: 0.2rem !important;
+		margin-top: 0.5rem;
+		margin-bottom: 0.5rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 5px;
 
-    &.is-open {
-      left: 0;
-    }
+		&__bar {
+			display: block;
+			width: 26px;
+			height: 3px;
+			background-color: #fdfdfd;
+			border-radius: 2px;
+			transition:
+				transform 0.3s ease,
+				opacity 0.3s ease,
+				width 0.3s ease;
+		}
 
-    // Cabecera
-    &__header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      padding: 0.85rem 1rem 0.85rem 0;
-      min-height: 64px;
-    }
+		// Animación a X cuando el menú está abierto
+		&[aria-expanded="true"] {
+			.mn-toggler__bar:nth-child(1) {
+				transform: translateY(8px) rotate(45deg);
+			}
+			.mn-toggler__bar:nth-child(2) {
+				opacity: 0;
+				width: 0;
+			}
+			.mn-toggler__bar:nth-child(3) {
+				transform: translateY(-8px) rotate(-45deg);
+			}
+		}
+	}
 
-    // Cuerpo
-    &__body {
-      flex: 1;
-      font-size: 1.5rem;
-      padding-top: 3rem;
-    }
+	// ── Overlay ───────────────────────────────────────────────────────────
+	.mn-overlay {
+		position: fixed;
+		inset: 0;
+		background-color: rgba(0, 0, 0, 0.55);
+		z-index: 200;
+		opacity: 0;
+		visibility: hidden;
+		transition:
+			opacity 0.3s ease,
+			visibility 0.3s ease;
 
-    // Logo
-    &__logo-link {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-    }
+		&.is-open {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
 
-    &__logo-img {
-      width: 180px;
-      max-width: 100%;
-      height: auto;
-    }
+	// ── Panel offcanvas ───────────────────────────────────────────────────
+	.mn-offcanvas {
+		position: fixed;
+		top: 0;
+		left: -320px;
+		width: 280px;
+		height: 100%;
+		background-color: #1a1a1a;
+		color: #fdfdfd;
+		z-index: 300;
+		transition: left 0.3s ease;
+		display: flex;
+		flex-direction: column;
+		overflow-y: auto;
+		box-shadow: 4px 0 16px rgba(0, 0, 0, 0.4);
+		// padding-left: 1rem;
+		padding-left: 2rem;
+		padding-top: 2.5rem;
 
-    // Botón cerrar
-    &__btn-close {
-      background: transparent;
-      border: none;
-      color: #fdfdfd;
-      font-size: 1.6rem;
-      line-height: 1;
-      cursor: pointer;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      opacity: 1;
-      transition: background-color 0.2s ease;
+		// @media (min-width: 576px) {
+		// 	padding-left: 2rem;
+		// }
 
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.12);
-      }
-    }
+		&.is-open {
+			left: 0;
+		}
 
-    // Lista de navegación
-    &__nav-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+		// Cabecera
+		&__header {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			padding: 0.85rem 1rem 0.85rem 0;
+			min-height: 64px;
+		}
 
-    &__nav-item {
-      color: #fdfdfd;
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
+		// Cuerpo
+		&__body {
+			flex: 1;
+			font-size: 1.5rem;
+			padding-top: 3rem;
+		}
 
-      &.current_page_item {
-        &::after {
-          content: "";
-          display: block;
-          background-color: #01fff7;
-          height: 3px;
-          width: 70%;
-        }
-      }
-    }
+		// Logo
+		&__logo-link {
+			display: flex;
+			align-items: center;
+			text-decoration: none;
+		}
 
-    &__nav-link {
-      display: block;
-      padding: 0.85rem 1.25rem 0.85rem 0;
-      color: #fdfdfd;
-      text-decoration: none;
-      font-size: 1.3rem;
-      transition:
-        color 0.2s ease,
-        padding-left 0.2s ease,
-        background-color 0.2s ease;
+		&__logo-img {
+			width: 180px;
+			max-width: 100%;
+			height: auto;
+		}
 
-      &:hover {
-        color: #01fff7;
-        padding-left: 0.5rem;
-        background-color: rgba(255, 255, 255, 0.06);
-      }
-    }
-  }
+		// Botón cerrar
+		&__btn-close {
+			background: transparent;
+			border: none;
+			color: #fdfdfd;
+			font-size: 1.6rem;
+			line-height: 1;
+			cursor: pointer;
+			padding: 0.25rem 0.5rem;
+			border-radius: 4px;
+			opacity: 1;
+			transition: background-color 0.2s ease;
+
+			&:hover {
+				background-color: rgba(255, 255, 255, 0.12);
+			}
+		}
+
+		// Lista de navegación
+		&__nav-list {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+		}
+
+		&__nav-item {
+			color: #fdfdfd;
+			margin-top: 0.5rem;
+			margin-bottom: 0.5rem;
+
+			&.current_page_item {
+				&::after {
+					content: "";
+					display: block;
+					background-color: #01fff7;
+					height: 3px;
+					width: 70%;
+				}
+			}
+		}
+
+		&__nav-link {
+			display: block;
+			padding: 0.85rem 1.25rem 0.85rem 0;
+			color: #fdfdfd;
+			text-decoration: none;
+			font-size: 1.3rem;
+			transition:
+				color 0.2s ease,
+				padding-left 0.2s ease,
+				background-color 0.2s ease;
+
+			&:hover {
+				color: #01fff7;
+				padding-left: 0.5rem;
+				background-color: rgba(255, 255, 255, 0.06);
+			}
+		}
+	}
 }
