@@ -459,12 +459,41 @@ function makistyle_wc_descuento_activo_script()
 	}?>
 	<script type="text/javascript">
 		document.addEventListener('DOMContentLoaded', function() {
-			// Manejar el blur del checkbox 'Es descuento' de cupones
+			// Manejar el blur del checkbox 'Es descuento' de cupones y la compatibilidad de combinación
 			var couponCheckbox = document.querySelector('input[name$="es_descuento"]');
 			if (couponCheckbox) {
 				couponCheckbox.addEventListener('change', function() {
 					couponCheckbox.blur();
+
+					// Al activar 'Es descuento'
+					if (couponCheckbox.checked) {
+						var individualUseCheckbox = document.getElementById('individual_use');
+						if (individualUseCheckbox) {
+							// WooCommerce funciona a la inversa: "Uso individual" debe estar DESMARCADA para permitir combinaciones.
+							// Forzamos a que esté desmarcada.
+							individualUseCheckbox.checked = false;
+							alert("Nota: Para que este descuento se pueda combinar con cupones, nos hemos asegurado de que la casilla nativa de WooCommerce 'Uso individual' quede desmarcada.");
+						} else {
+							alert("Atención: No se ha encontrado la casilla 'Uso individual' de WooCommerce en esta página.");
+						}
+					}
 				});
+
+				// Validación al intentar guardar el cupón
+				var postForm = document.getElementById('post');
+				if (postForm) {
+					postForm.addEventListener('submit', function(e) {
+						if (couponCheckbox.checked) {
+							var individualUseCheckbox = document.getElementById('individual_use');
+							if (individualUseCheckbox && individualUseCheckbox.checked) {
+								// Bloquear el guardado
+								e.preventDefault();
+								alert("Error al guardar: Has marcado la casilla 'Es descuento', por lo que la opción 'Uso individual' (en Restricción de uso) debe estar obligatoriamente DESMARCADA para permitir combinaciones. Por favor, desmárcala antes de guardar.");
+							}
+						}
+					});
+				}
+
 				return;
 			}
 
@@ -568,21 +597,23 @@ function makistyle_cmb2_cupones()
 	$prefix = 'makistyle_cmb2_coupon_';
 
 	$coupon_box = new_cmb2_box([
-		'id'           => $prefix . 'metaboxes',
-		'title'        => esc_html__('Configuración adicional del Cupón', 'cmb2'),
+		'id' => $prefix . 'metaboxes',
+		'title' => esc_html__('Configuración adicional del Cupón', 'cmb2'),
 		'object_types' => ['shop_coupon'], // Post type para Cupones de WooCommerce
-		'context'      => 'normal',
-		'priority'     => 'high',
-		'show_names'   => true,
+		'context' => 'normal',
+		'priority' => 'high',
+		'show_names' => true,
 		'show_in_rest' => true,
 	]);
 
 	$coupon_box->add_field([
 		'name' => esc_html__('Es descuento', 'cmb2'),
-		'desc' => esc_html__('Activa esta opción para identificar este cupón como un descuento automático del sistema, diferenciándolo de los cupones tradicionales.', 'cmb2'),
-		'id'   => $prefix . 'es_descuento',
+		'desc' => esc_html__(
+			'Activa esta opción para identificar este cupón como un descuento automático del sistema, diferenciándolo de los cupones tradicionales.',
+			'cmb2',
+		),
+		'id' => $prefix . 'es_descuento',
 		'type' => 'checkbox',
 	]);
 }
 add_action('cmb2_init', 'makistyle_cmb2_cupones');
-

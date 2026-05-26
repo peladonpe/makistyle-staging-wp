@@ -95,3 +95,61 @@ add_filter(
 	},
 	9999,
 );
+
+/**
+ * Aplica automáticamente los cupones configurados como "descuento" cuando se añade un producto al carrito.
+ * Verifica si el producto tiene cupones asociados en 'product_ids' y si estos tienen 'Es descuento' activado.
+ */
+function makistyle_aplicar_descuentos_al_carrito( $cart_item_key, $product_id, $quantity, $variation_id, $variation, $cart_item_data ) {
+	global $wpdb;
+
+	// Buscar cupones publicados que incluyan este producto en sus restricciones ("product_ids")
+	$coupon_ids = $wpdb->get_col($wpdb->prepare(
+		"SELECT pm.post_id 
+		FROM $wpdb->postmeta pm 
+		INNER JOIN $wpdb->posts p ON pm.post_id = p.ID 
+		WHERE pm.meta_key = 'product_ids' 
+		AND FIND_IN_SET(%d, pm.meta_value) 
+		AND p.post_status = 'publish'
+		AND p.post_type = 'shop_coupon'",
+		$product_id
+	));
+
+	if ( ! empty( $coupon_ids ) ) {
+		foreach ( $coupon_ids as $cid ) {
+			// Comprobar si el cupón tiene activada la casilla "Es descuento"
+			$es_descuento = get_post_meta( $cid, 'makistyle_cmb2_coupon_es_descuento', true );
+			
+			if ( $es_descuento === 'on' ) {
+				$coupon = new WC_Coupon( $cid );
+				$coupon_code = $coupon->get_code();
+
+				// Si el descuento no está aplicado ya en el carrito, lo aplicamos
+				if ( WC()->cart && ! WC()->cart->has_discount( $coupon_code ) ) {
+					WC()->cart->apply_coupon( $coupon_code );
+				}
+			}
+		}
+	}
+}
+add_action( 'woocommerce_add_to_cart', 'makistyle_aplicar_descuentos_al_carrito', 10, 6 );
+
+/**
+ * Actualiza el icono del carrito del menú principal mediante AJAX.
+ */
+function makistyle_actualizar_icono_carrito_menu($fragments) {
+	ob_start();
+	$cart_url = function_exists('wc_get_cart_url') ? wc_get_cart_url() : home_url('/carrito/');
+	$cart_count = (function_exists('WC') && WC()->cart) ? WC()->cart->get_cart_contents_count() : 0;
+	?>
+	<a href="<?php echo esc_url($cart_url); ?>" class="mn-navbar__action mn-navbar__action--cart" aria-label="Carrito">
+		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+		<?php if ($cart_count > 0) : ?>
+			<span class="mn-navbar__cart-count"><?php echo esc_html($cart_count); ?></span>
+		<?php endif; ?>
+	</a>
+	<?php
+	$fragments['a.mn-navbar__action--cart'] = ob_get_clean();
+	return $fragments;
+}
+add_filter('woocommerce_add_to_cart_fragments', 'makistyle_actualizar_icono_carrito_menu');

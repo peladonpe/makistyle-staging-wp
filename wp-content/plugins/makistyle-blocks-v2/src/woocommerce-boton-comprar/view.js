@@ -64,6 +64,17 @@ document.addEventListener( 'DOMContentLoaded', function () {
 						button.style.opacity = '1';
 						button.style.cursor = 'pointer';
 
+						// Actualizar los fragmentos manualmente (Vanilla JS) para asegurar que funciona
+						// independientemente de si jQuery / cart-fragments.js está activo
+						if (data.fragments) {
+							Object.keys(data.fragments).forEach((selector) => {
+								const elements = document.querySelectorAll(selector);
+								elements.forEach((el) => {
+									el.outerHTML = data.fragments[selector];
+								});
+							});
+						}
+
 						// Obligatorio: Disparar evento de jQuery para que el ecosistema 
 						// nativo de WooCommerce (cart-fragments.js) se entere y actualice la cabecera.
 						if (typeof jQuery !== 'undefined') {
